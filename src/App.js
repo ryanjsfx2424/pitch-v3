@@ -153,9 +153,9 @@ function App() {
 		"3. Can I be part of Pitch without owning anything? ANSWER Yes! We celebrate the love for football and you can always come over for a chat and banter with us!  Many of our giveaways in the first stage will be open to all.",
 		"4. Where is the list of prizes? ANSWER Full list announced soon.  Examples include a signed Ronaldo jersey, signed Messi ball, premium game tickets, plus straight cash and ETH!",
 		"5. What will the first Pitch NFT collection include? ANSWER Our first NFT collection will be a limited edition for our OG members which will include special perks, exclusive giveaways and priority in subsequent collection mint.",
-		"6. When is the mint? ANSWER December 15th",
+		"6. When is the mint? ANSWER December 16th",
 		"7. What’s the supply? ANSWER 640 tokens",
-		"8. How much is mint? ANSWER TBA",
+		"8. How much is mint? ANSWER 0.02 eth",
 		"9. Which blockchain will the NFT mint be on? ANSWER All tokens will mint on Ethereum network.",
 		"10. Will there be allow lists? ANSWER Yes! Stay tuned for more updates; get an advantage by staying active, helping your fellow members and growing our community. The team is watching and will certainly award any enthusiastic members."
 	]
@@ -202,10 +202,13 @@ function App() {
 								</a>
 							</Flex>
 						</Flex>
-						<Image src={Banner}  mb="6"/>
 
-						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center" ml={["-10", "-20"]}>
-							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6">
+
+						<Image src={Banner} w={["100%", "50%"]} mb="6" ml={["0","25%"]}/>
+
+
+						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center" ml={["-10", "-20"]} direction={["column", "row"]}>
+							<Flex w={["67%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="1" ml={["10","20"]} mt={["3", "6"]} mb={["3", "6"]}>
 								<Text fontSize={["15px", "17px"]}>
 									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
 
@@ -214,12 +217,11 @@ function App() {
 											<Button backgroundColor="yellow" color={"black"}>Banter here &gt;&gt;&gt;</Button>
 										</a>
 									</Flex>
-									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Are you a football nut and want to show off your banter skills?</Text>
+									<Text fontWeight="bold" fontSize={["20px", "24px" ]} mb="2" mt="2">Are you a football nut and want to show off your banter skills?</Text>
 								</Text>
 							</Flex>
-						</Flex>
-						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center">
-							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" ml={["10","20"]} mt={["3", "6"]} mb={["3", "6"]}>
+
+							<Flex w={["67%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="1" ml={["10","20"]} mt={["3", "6"]} mb={["3", "6"]}>
 								<Text fontSize={["15px", "17px"]}>
 									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
 
@@ -228,12 +230,13 @@ function App() {
 											<Button backgroundColor="orange" color={"black"}>Celebrate here &gt;&gt;&gt;</Button>
 										</a>
 									</Flex>
-									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Celebrate the glory of your team! Shame the players flopping to get a foul call!</Text>
+									<Text fontWeight="bold" fontSize={["20px", "24px" ]} mb="2" mt="2">Celebrate the glory of your team! Shame the players flopping to get a foul call!</Text>
 								</Text>
 							</Flex>
 						</Flex>
-						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center" ml={["-10", "-20"]}>
-							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6">
+
+						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center" ml={["-10", "-20"]} direction={["column", "row"]}>
+							<Flex w={["67%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="1" ml={["10","20"]} mt={["3", "6"]} mb={["3", "6"]}>
 								<Text fontSize={["15px", "17px"]}>
 									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
 
@@ -242,12 +245,10 @@ function App() {
 											<Button backgroundColor="cyan" color={"black"}>Play here &gt;&gt;&gt;</Button>
 										</a>
 									</Flex>
-									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Play trivia and win autographed jerseys from star players!</Text>
+									<Text fontWeight="bold" fontSize={["20px", "27px" ]} mb="2" mt="2">Play trivia and win autographed jerseys from star players!</Text>
 								</Text>
 							</Flex>
-						</Flex>
-						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center">
-							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" ml={["10","20"]} mt={["3", "6"]}>
+							<Flex w={["67%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="1" ml={["10","20"]} mt={["3", "6"]}>
 								<Text fontSize={["15px", "17px"]}>
 									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
 
@@ -256,7 +257,7 @@ function App() {
 											<Button backgroundColor="rgb(72, 57, 185)" color={"black"}>Enter here &gt;&gt;&gt; </Button>
 										</a>
 									</Flex>
-									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Enter a meme contest and win VIP match tickets!</Text>
+									<Text fontWeight="bold" fontSize={["20px", "27px" ]} mb="2" mt="2">Enter a meme contest and win VIP match tickets!</Text>
 								</Text>
 							</Flex>
 						</Flex>
@@ -267,8 +268,8 @@ function App() {
 									<Flex align="center" mb="3" color="rgb(255, 0, 98)" fontSize="30px"><Text mb="15px">_</Text><Flex h="72px" w="72px" align="center" justify="center" borderRadius="100%" bg="rgb(80,80,130)" transition="300ms ease-in-out" _hover={{ bg: "rgb(100,100,150)"}} data-aos="fade-up" border="2px solid rgb(255, 0, 98)"><i className="mdi mdi-earth"></i></Flex></Flex>
 
 									<Text color="rgb(200,200,250)" fontSize="20px">What is Pitch?</Text>
-									<Text fontWeight="bold" fontSize={["28px", "30px"]} mb="6">Pitch is a new startup with a mission to create a community devoted to the future of the beautiful game in web3. It’s a place to have a kickass time and meet fellow fans. Pitch is for fans who love to banter, trivia nuts, gamers, memelords, and any footballer who enjoys a laugh.  Members will be rewarded with killer prizes and NFTs, with access to premium content and exclusive events.</Text>
-									<Text fontWeight="bold" fontSize={["28px", "30px"]}>Ultimately, our vision of Pitch is a platform which spans our digital and physical worlds, including mobile-first applications at the center of the Football Web3 space.  Picture a future state where football team owners, players and various organizations across the industry are developing and delivering digital rewards to fans.  Pitch will be your future digital home page to navigate this new football-web3 ecosystem, a hub to manage, showcase and utilize your football related tokens.  IRL we’ll host community events for members such as an annual multi-day festival coinciding with the Champions League final.</Text>
+									<Text fontWeight="bold" fontSize={["18px", "27px"]} mb="6">Pitch is a new startup with a mission to create a community devoted to the future of the beautiful game in web3. It’s a place to have a kickass time and meet fellow fans. Pitch is for fans who love to banter, trivia nuts, gamers, memelords, and any footballer who enjoys a laugh.  Members will be rewarded with killer prizes and NFTs, with access to premium content and exclusive events.</Text>
+									<Text fontWeight="bold" fontSize={["18px", "27px"]}>Ultimately, our vision of Pitch is a platform which spans our digital and physical worlds, including mobile-first applications at the center of the Football Web3 space.  Picture a future state where football team owners, players and various organizations across the industry are developing and delivering digital rewards to fans.  Pitch will be your future digital home page to navigate this new football-web3 ecosystem, a hub to manage, showcase and utilize your football related tokens.  IRL we’ll host community events for members such as an annual multi-day festival coinciding with the Champions League final.</Text>
 								</Flex>
 							</Flex>
 						</Flex>
@@ -394,22 +395,22 @@ function App() {
 								</Text>
 								<Flex w="100%" justify="center" px="10%" direction={["column", "row"]}>
 									<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-										<Text fontWeight="bold" fontSize={["24px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+										<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 											Founder
 										</Text>
 										<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder1} mt="6" data-aos="fade-up" />
-										<Text fontSize="18px" textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
+										<Text fontSize={["14px", "18px"]} textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
 										<Text color="rgb(200,200,250)" cursor="pointer" mb="2" onClick={() => window.open("https://twitter.com/UnFunkableToken", "_BLANK")}>@UnFunkableToken</Text>
 										A data scientist turned entrepreneur, with a renewed focus on leadership & product development, and experience across tech, finance, and philanthropy.  Pursuing web3 ventures full-time after leaving a senior management role at Facebook earlier this year.  A lifelong player, fan and coach…rooting for Team USA in the World Cup!
 										</Text>
 									</Flex>
 
 									<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-										<Text fontWeight="bold" fontSize={["24px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+										<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 											Artist
 										</Text>
 										<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder2} mt="6" data-aos="fade-up" />
-										<Text fontSize="18px" textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
+										<Text fontSize={["14px", "18px"]} textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
 										<Text color="rgb(200,200,250)" cursor="pointer" mb="2" onClick={() => window.open("https://twitter.com/HorstVonMueller", "_BLANK")}>@HorstVonMueller</Text>
 										Creative industry professional with 25+ years experience, working with Mercedes, Porsche, Samsung, and the like. Only to find out that it feels much better to do art at the root of something new and take part in a developing revolution of the creative industry. 
 										</Text>
@@ -418,32 +419,32 @@ function App() {
 
 								<Flex w="100%" justify="center" px="10%" direction={["column", "row"]}>
 									<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-										<Text fontWeight="bold" fontSize={["24px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+										<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 											Developer
 										</Text>
 										<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder3} mt="6" data-aos="fade-up" />
-										<Text fontSize="18px" textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
+										<Text fontSize={["14px", "18px"]} textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
 										<Text color="rgb(200,200,250)" cursor="pointer" mb="2" onClick={() => window.open("https://twitter.com/TheLunaLabs", "_BLANK")}>@TheLunaLabs</Text>
 										Luna studies how galaxies form their stars by performing numerical simulations with some of the largest supercomputers yet known to mankind and loves living on the cutting-edge of our evolvingly technocratic society. Luna has developed dozens of discord bots, smart contracts, and minting dapps and enjoys the breathtaking speed of digital evolution known as web3. Luna is a fan of Sadio Mané and Bayern München.
 										</Text>
 									</Flex>
 
 									<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-										<Text fontWeight="bold" fontSize={["24px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+										<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 											Marketing/Community/Strategy
 										</Text>
 										<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder4} mt="6" data-aos="fade-up" />
-										<Text fontSize="18px" textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
+										<Text fontSize={["14px", "18px"]} textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
 										<Text color="rgb(200,200,250)" cursor="pointer" mb="2" onClick={() => window.open("https://twitter.com/uav1869", "_BLANK")}>@uav1869</Text>
 										E-commerce wiz with over 10 years of experience. Now consulting startup’s across all industries. Web3 enthusiast committed to creating one degen at a time. Dead ball specialist. 
 										</Text>
 									</Flex>
 								</Flex>
 
-								<Flex align="center" w="200%" px="10%" direction={["column", "row"]} justify="center">
+								<Flex align="center" w={["100%","200%"]} px="10%" direction={["column", "row"]} justify="center">
 
 									<Flex w={["100%", "50%"]} direction="column" align="center">
-										<Text fontWeight="bold" fontSize={["24px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+										<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 											Community/Moderation
 										</Text>
 
@@ -451,7 +452,7 @@ function App() {
 											<Flex direction="column" align="center" w={["100%", "50%"]}>
 												<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder5} mt="6" data-aos="fade-up" />
 
-												<Text fontSize="18px" textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
+												<Text fontSize={["14px", "18px"]} textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
 												<Text color="rgb(200,200,250)" cursor="pointer" mb="2" onClick={() => window.open("https://twitter.com/fede_rr_", "_BLANK")}>@fede_rr_</Text>
 												IP lawyer who fell in love with Web3 and NFTs: fascinated by the new routes Web3 is opening in terms of management and exploitation of IP rights.  Been in this space since 2021, moderating and building communities.  Petrolhead with a green heart, I spend most of my free time in the mountains, either with my bicycle or my motorbike.  Professional cat petter and wine lover.
 												”There’s only one Ronaldo, and his name is not Cristiano”.
@@ -471,7 +472,7 @@ function App() {
 										FAQ
 									</Text>
 
-									<Text mb="4" fontSize="24px">
+									<Text mb="4" fontSize={["17px", "24px"]}>
 									This page will be continually updated so check back for unanswered questions!
 									</Text>
 
@@ -480,13 +481,13 @@ function App() {
 											pitchQs.map((item, index) => (
 												<AccordionItem>
 													<AccordionButton>
-														<Flex flex='1' textAlign='left' mb="4" fontSize="24px">
+														<Flex flex='1' textAlign='left' mb="4" fontSize={["17px", "24px"]}>
 															{item.split(" ANSWER ")[0]}
 														</Flex>
 														<AccordionIcon />
 													</AccordionButton>
 													<AccordionPanel pb={4}>
-														<Text mb="4" fontSize="24px">
+														<Text mb="4" fontSize={["17px", "24px"]}>
 															{item.split(" ANSWER ")[1]}
 														</Text>
 													</AccordionPanel>
