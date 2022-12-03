@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { 
 	Flex,
+	Button,
 	Image,
 	Text,
 	ChakraProvider,
@@ -43,6 +44,10 @@ import show12 from "./show12.png";
 import show13 from "./show13.png";
 import show14 from "./show14.png";
 import show15 from "./show15.png";
+// import Banner from "./header.jpeg";
+import Banner from "./Banner.jpg";
+import Ticket from "./ticket.png";
+import Graphic from "./horst_graphics.jpg";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import icon from "./icon_pitch.png";
@@ -85,23 +90,55 @@ function App() {
 
 	const showCase = [show1, show2, show3, show4, show5, show6, show7, show8]//, show9, show10, show11, show12, show13, show14, show15]
 
-	const pitchMaps = [ "World Cup excitement! Discord action centered around the tournament.", 
-					"Banter, memes and frequent contests with amazing prizes.", 
-					"Pitch will cover the tab of your group's watch party (2 each week)", 
-					"Preview of artwork for 1st NFT collection; utility and mint details released." 
-					]
+	// const pitchMaps = [ "World Cup excitement! Discord action centered around the tournament.", 
+	// 				"Banter, memes and frequent contests with amazing prizes.", 
+	// 				"Pitch will cover the tab of your group's watch party (2 each week)", 
+	// 				"Preview of artwork for 1st NFT collection; utility and mint details released." 
+	// 				]
+	const pitchMaps = [
+		"World Cup excitement, banter and community events with frequent prizes given!",
+		"Football trivia and game prediction leaderboard",
+		"Meme contests and fan art contests",
+		"FIFA 21 gaming tournament",
+		"Twitter Space co-hosted by professional commentator during WC games",
+		"Discord coin economy redeemable in merch store",
+		"Prize pool of 20+ items including signed gear by star players",
+		"Pitch will organize and cover the tab of your group’s watch party (2 each week)",
+		"Art preview for 1st NFT collection and mint details released"
+	]
 
-	const pitchMaps2 = [ "1st mini NFT collection launched Dec 15. Basic benefits include access to grand prizes for WC final; airdrops and access to project collaborations; allow-list spot for Pitch's main PFP collection launch in mid-January.", 
-	"Organized and sponsored watch parties for later rounds of World Cup.", 
-	"Creation of and initial setup of Pitch DAO.", 
-]
+// 	const pitchMaps2 = [ "1st mini NFT collection launched Dec 15. Basic benefits include access to grand prizes for WC final; airdrops and access to project collaborations; allow-list spot for Pitch's main PFP collection launch in mid-January.", 
+// 	"Organized and sponsored watch parties for later rounds of World Cup.", 
+// 	"Creation of and initial setup of Pitch DAO.", 
+// ]
+	const pitchMaps2 = [
+		"Ethereum Mainnet ERC-1155 tokens",
+		"Supply of 640 tokens",
+		"Mint price of 0.02 ETH"
+	]
 
-	const pitchMaps3 = [ "January: main launch of main PFP generative NFT collection.", 
-	"Exclusive IRL community events and meetups, focused on EPL and Champions League.",
-	"Finalize DAO governance and funding strategy.",
-	"Announce partnerships with football teams, players and local community organizations.",
-	"Define scope of digital platform for members and start building prototype app."
- ]
+// 	const pitchMaps3 = [ "January: main launch of main PFP generative NFT collection.", 
+// 	"Exclusive IRL community events and meetups, focused on EPL and Champions League.",
+// 	"Finalize DAO governance and funding strategy.",
+// 	"Announce partnerships with football teams, players and local community organizations.",
+// 	"Define scope of digital platform for members and start building prototype app."
+//  ]
+	const pitchMaps3 = [
+		"Entry to WC final giveaway on Dec 18th with top-tier grand prizes",
+		"Access to exclusive Pitch-sponsored events",
+		"Membership in Pitch DAO, funded with 20% of token proceeds",
+		"Allow-list spots for other high quality project mints",
+		"Football betting alpha and alerts given by professionals",
+		"Allow-list spot reserved for Pitch’s main PFP collection in January 2023"
+	]
+
+	const pitchMaps4 = [
+		"PFP generative art NFT collection launched in January 2023",
+		"Exclusive IRL community events focused on EPL and Champions League",
+		"Finalize DAO governance and funding priorities",
+		"Land partnerships with football teams, players and local organizations",
+		"Define scope of digital platform for members and start building prototype apps"
+	]
 
 	const pitchDrive = [ 
 		"We are a new startup with a mission to create a community devoted to the future of the beautiful game in web3.",
@@ -143,7 +180,7 @@ function App() {
 					<>
 						<Flex px={["4", "12"]} w="100%" bg="rgba(255,255,255,0.07)" align="center" position="sticky" top="0" borderRadius="8px" mb="6" zIndex="1" data-aos="fade-up" backdropFilter="blur(4px)" py="3">
 							<Flex align="center">
-								<Text fontWeight="bold" ml="3" display={["none", "block"]} textShadow="6px 2px rgb(70,70,70)" fontSize={["18px", "24px"]}>Pitch</Text>
+								<Image src={Ticket} w={["80px", "100px"]} h={["40px", "50px"]} />
 							</Flex>
 							<Flex flex="1" align="center" justify="flex-end">
 								<Flex mr={["3", "7" ]} cursor="pointer" fontWeight="bold" border="1px solid #fff" py="3" borderRadius="8px" px="7" bg="rgba(255,255,255,0.2)" _hover={{ bg: "rgba(255,255,255,0.4)"}} display={["none", "flex"]} onClick={() => {
@@ -151,24 +188,87 @@ function App() {
 									a.scrollIntoView({behavior: "smooth"})
 								}}>Roadmap</Flex>
 
-								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  mr={["3", "5" ]} onClick={() => window.open({TWITTER_LINK}, "_BLANK")} color="#1DA1F2"><i className="mdi mdi-twitter"></i></Flex>
+								<a href={TWITTER_LINK}>
+									<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  mr={["3", "5" ]} onClick={() => window.open({TWITTER_LINK}, "_BLANK")} color="#1DA1F2"><i className="mdi mdi-twitter"></i></Flex>
+								</a>
 
 
-								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  color="#cd486b" mr={["3", "5" ]} onClick={() => window.open({INSTAGRAM_LINK}, "_BLANK")}><i className="mdi mdi-instagram"></i></Flex>
+								<a href={DISCORD_LINK}>
+									<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer"  color="#cd486b" mr={["3", "5" ]} onClick={() => window.open({INSTAGRAM_LINK}, "_BLANK")}><i className="mdi mdi-instagram"></i></Flex>
+								</a>
 
-								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer" color="#7289da" onClick={() => window.open({DISCORD_LINK}, "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
+								<a href={INSTAGRAM_LINK}>
+									<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.9)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.7)"}} cursor="pointer" color="#7289da" onClick={() => window.open({DISCORD_LINK}, "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
+								</a>
+							</Flex>
+						</Flex>
+						<Image src={Banner}  mb="6"/>
+
+						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center" ml={["-10", "-20"]}>
+							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6">
+								<Text fontSize={["15px", "17px"]}>
+									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
+
+									<Flex justify="flex-end">
+										<a href={DISCORD_LINK}>
+											<Button backgroundColor="yellow" color={"black"}>Banter here &gt;&gt;&gt;</Button>
+										</a>
+									</Flex>
+									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Are you a football nut and want to show off your banter skills?</Text>
+								</Text>
+							</Flex>
+						</Flex>
+						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center">
+							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" ml={["10","20"]} mt={["3", "6"]} mb={["3", "6"]}>
+								<Text fontSize={["15px", "17px"]}>
+									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
+
+									<Flex justify="flex-end">
+										<a href={DISCORD_LINK}>
+											<Button backgroundColor="orange" color={"black"}>Celebrate here &gt;&gt;&gt;</Button>
+										</a>
+									</Flex>
+									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Celebrate the glory of your team! Shame the players flopping to get a foul call!</Text>
+								</Text>
+							</Flex>
+						</Flex>
+						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center" ml={["-10", "-20"]}>
+							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6">
+								<Text fontSize={["15px", "17px"]}>
+									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
+
+									<Flex justify="flex-end">
+										<a href={DISCORD_LINK}>
+											<Button backgroundColor="cyan" color={"black"}>Play here &gt;&gt;&gt;</Button>
+										</a>
+									</Flex>
+									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Play trivia and win autographed jerseys from star players!</Text>
+								</Text>
+							</Flex>
+						</Flex>
+						<Flex w="100%" overflow="hidden" mt={["4", "0"]} justify="center">
+							<Flex w={["37%", "27%"]} direction="column" data-aos="fade-right" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" ml={["10","20"]} mt={["3", "6"]}>
+								<Text fontSize={["15px", "17px"]}>
+									<Flex align="center" mb="3" color="rgb(255, 213, 0)" fontSize="25px"></Flex>
+
+									<Flex justify="flex-end">
+										<a href={DISCORD_LINK}>
+											<Button backgroundColor="rgb(72, 57, 185)" color={"black"}>Enter here &gt;&gt;&gt; </Button>
+										</a>
+									</Flex>
+									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">Enter a meme contest and win VIP match tickets!</Text>
+								</Text>
 							</Flex>
 						</Flex>
 
 						<Flex w="100%" justify="space-between" mt={["6", "12"]} mb="6" align="center" overflowX="hidden" direction={["column", "row"]}>
-							<Flex w={["100%", "45%"]} direction="column">
+							<Flex w={["100%", "100%"]} direction="column">
 								<Flex w="100%" direction="column" data-aos="fade-right" borderRadius="8px" py="6">
 									<Flex align="center" mb="3" color="rgb(255, 0, 98)" fontSize="30px"><Text mb="15px">_</Text><Flex h="72px" w="72px" align="center" justify="center" borderRadius="100%" bg="rgb(80,80,130)" transition="300ms ease-in-out" _hover={{ bg: "rgb(100,100,150)"}} data-aos="fade-up" border="2px solid rgb(255, 0, 98)"><i className="mdi mdi-earth"></i></Flex></Flex>
 
 									<Text color="rgb(200,200,250)" fontSize="20px">What is Pitch?</Text>
-									<Text fontWeight="bold" fontSize={["28px", "30px"]}>Pitch is football.</Text>
-									<Text fontWeight="bold" fontSize={["28px", "30px"]}>Pitch is community.</Text>
-									<Text fontWeight="bold" fontSize={["28px", "30px"]}>Pitch is a place for digital collectibles.</Text>
+									<Text fontWeight="bold" fontSize={["28px", "30px"]} mb="6">Pitch is a new startup with a mission to create a community devoted to the future of the beautiful game in web3. It’s a place to have a kickass time and meet fellow fans. Pitch is for fans who love to banter, trivia nuts, gamers, memelords, and any footballer who enjoys a laugh.  Members will be rewarded with killer prizes and NFTs, with access to premium content and exclusive events.</Text>
+									<Text fontWeight="bold" fontSize={["28px", "30px"]}>Ultimately, our vision of Pitch is a platform which spans our digital and physical worlds, including mobile-first applications at the center of the Football Web3 space.  Picture a future state where football team owners, players and various organizations across the industry are developing and delivering digital rewards to fans.  Pitch will be your future digital home page to navigate this new football-web3 ecosystem, a hub to manage, showcase and utilize your football related tokens.  IRL we’ll host community events for members such as an annual multi-day festival coinciding with the Champions League final.</Text>
 								</Flex>
 							</Flex>
 						</Flex>
@@ -206,6 +306,7 @@ function App() {
 									<Text color="rgb(200,200,250)" mb="1" fontSize="20px">Pitch Roadmap</Text>
 									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">- Soon</Text>
 									<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up">
+										<Text fontWeight="bold" fontSize={["18px", "27px" ]} mb="2">1st preliminary NFT collection launched Friday Dec 16th 2022:</Text>
 										{
 											pitchMaps2.map((item, index) => (
 												<Flex key={index} w="100%" mb="4" justify="space-between" pr={["0", "10%"]}>
@@ -215,6 +316,18 @@ function App() {
 											))
 										}
 									</Flex>
+									<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up" mt="6">
+										<Text fontWeight="bold" fontSize={["18px", "27px" ]} mb="2">Holder benefits include:</Text>
+										{
+											pitchMaps3.map((item, index) => (
+												<Flex key={index} w="100%" mb="4" justify="space-between" pr={["0", "10%"]}>
+													<Text w={["35px", "60px"]} fontWeight="bold" fontSize={["18px", "40px" ]}color="rgb(200,200,250)">0{index + 1}.</Text>
+													<Text w="90%" mt={["0", "3"]} fontSize={["18px", "21px"]}>{item}</Text>
+												</Flex>
+											))
+										}
+									</Flex>
+
 								</Text>
 							</Flex>
 						</Flex>
@@ -228,7 +341,7 @@ function App() {
 									<Text fontWeight="bold" fontSize={["20px", "30px" ]} mb="2">- Future</Text>
 									<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up">
 										{
-											pitchMaps3.map((item, index) => (
+											pitchMaps4.map((item, index) => (
 												<Flex key={index} w="100%" mb="4" justify="space-between" pr={["0", "10%"]}>
 													<Text w={["35px", "60px"]} fontWeight="bold" fontSize={["18px", "40px" ]} color="rgb(200,200,250)">0{index + 1}.</Text>
 													<Text w="90%" mt={["0", "3"]} fontSize={["18px", "21px"]}>{item}</Text>
@@ -243,7 +356,7 @@ function App() {
 
 						
 
-						<Flex w="100%" mt={["6", "12"]} data-aos="fade-up" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" direction="column">
+						{/* <Flex w="100%" mt={["6", "12"]} data-aos="fade-up" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" direction="column">
 							<Flex pr={["0", "5%" ]}align="flex-start" direction={["column", "row"]}>
 								<Flex mr="6" mt={["2", "6"]} align="center" mb="3" color="rgb(0, 255, 234)" fontSize="50px"><Text mb="25px">_</Text><Flex h="100px" w="100px" align="center" justify="center" borderRadius="100%" bg="rgb(80,80,130)" transition="300ms ease-in-out" _hover={{ bg: "rgb(100,100,150)"}} data-aos="fade-up" border="2px solid rgb(0, 255, 234)"><i className="mdi mdi-rocket"></i></Flex></Flex>
 								<Text>
@@ -272,7 +385,7 @@ function App() {
 									</Text>
 								</Text>
 							</Flex>
-						</Flex>
+						</Flex> */}
 
 						<Flex justify="center" mt={["6", "12"]} backgroundColor="rgba(255,255,255,0.03)" borderRadius="8px" py="12" className="bgStars">
 							<Flex w="100%" direction="column" align="center">
@@ -391,15 +504,21 @@ function App() {
 								Copyright © 2022 Pitch Web3. All rights reserved.
 							</Text>
 							<Flex flex="1" align="center" justify="center" mt="8"  data-aos="fade-up">
-							<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open({TWITTER_LINK}, "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
+							<a href={TWITTER_LINK}>
+								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open({TWITTER_LINK}, "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
+							</a>
 
-							<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open({DISCORD_LINK}, "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
+							<a href={DISCORD_LINK}>
+								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open({DISCORD_LINK}, "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
+							</a>
 
-							<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open({INSTAGRAM_LINK}, "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
-							</Flex>
+							<a href={INSTAGRAM_LINK}>
+								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open({INSTAGRAM_LINK}, "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
+							</a>
 						</Flex>
+					</Flex>
 
-					</>
+				</>
 				}
 			</Flex>
 		</ChakraProvider>
