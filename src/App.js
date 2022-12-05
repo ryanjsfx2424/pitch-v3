@@ -50,6 +50,9 @@ const sectionHeaderFontSize = ["24px", "36px"]
 const headerBigFS = ["4vh", "6vh"];
 const cardFS = ["1.8vh","2.2vh"]
 const roadmapBulletsFS = ["14px", "16px"]
+const qCardWidth  = ["70vw", "20vw"]
+const qCardHeight = ["15vh", "8vw"]
+const teamTitlesFS = ["18px", "30px"]
 
 const visionHeader = [{
 	fontFamily: "PoppinsExtraBold",
@@ -223,17 +226,17 @@ function App() {
 					<Text fontSize={headerBigFS} className="headerText headerBig">NFTs</Text>
 					<Text className="headerText headerSml" marginTop={["12%", "4%"]}>A new project</Text>
 					<Text className="headerText headerSml">all about futbol for</Text>
-					<Text className="headerText headerSml" marginBottom={["12","4%"]}>the degen community.</Text>
+					<Text className="headerText headerSml" marginBottom={["12","2%"]}>the degen community.</Text>
 					<div>
 						<button className="headerDiscordButton">Join Discord</button>
 					</div>
 				</Flex>
 			</Flex>
 			<Flex w="100vw" height={["70vh","40vh"]} className='whiteSquareBkg'>
-				<Flex w="70vw" margin={[["7.5vw 15vw"], ["2.5vw 15vw"]]} direction="column">
+				<Flex w="70vw" margin={[["7.5vw 15vw"], ["2vw 15vw"]]} direction="column">
 					<Flex direction={["column","row"]}>
 
-						<Flex width={["70vw", "25vw"]} height={["15vh","8vw"]} marginBottom={["3%",0]} className="qCard qCardTopLeft" direction="column">
+						<Flex className="qCard" direction="column" width={qCardWidth} height={qCardHeight} marginRight={["0", "3%"]} marginBottom="3%">
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardYellow qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardYellow qCardButton">Banter here &gt;&gt;&gt;</a>
@@ -242,7 +245,7 @@ function App() {
 							<Text fontSize={cardFS} className="qCardText">and want to show off</Text>
 							<Text fontSize={cardFS} className="qCardText qCardBottom">your banter skills?</Text>
 						</Flex>
-						<Flex className="qCard qCardTopRight" direction="column">
+						<Flex className="qCard" direction="column" width={qCardWidth} height={qCardHeight} marginBottom="3%">
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardOrange qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardOrange qCardButton">Celebrate here &gt;&gt;&gt;</a>
@@ -252,8 +255,8 @@ function App() {
 							<Text fontSize={cardFS} className="qCardText qCardBottom">flopping to get a foul call!</Text>
 						</Flex>
 					</Flex>
-					<Flex direction={["column","row"]} width={["70vw", "25vw"]} height={["15vh","8vw"]} marginBottom={["3%",0]}>
-						<Flex className="qCard qCardBottomLeft" direction="column">
+					<Flex direction={["column","row"]} marginBottom={["3%",0]}>
+						<Flex className="qCard" direction="column" width={qCardWidth} height={qCardHeight} marginRight={["0", "3%"]}>
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardAqua qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardAqua qCardButton">Play here &gt;&gt;&gt;</a>
@@ -262,7 +265,7 @@ function App() {
 							<Text fontSize={cardFS} className="qCardText">win autographed jerseys</Text>
 							<Text fontSize={cardFS} className="qCardText qCardBottom">from star players!</Text>
 						</Flex>
-						<Flex className="qCard qCardBottomRight" direction="column" width={["70vw", "25vw"]} height={["15vh","8vw"]} marginBottom={["3%",0]}>
+						<Flex className="qCard" direction="column" width={qCardWidth} height={qCardHeight} marginBottom={["3%",0]}>
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardBlue qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardBlue qCardButton">Enter here &gt;&gt;&gt;</a>
@@ -377,7 +380,7 @@ function App() {
 						</Text>
 						<Flex w="100%" justify="center" px="10%" direction={["column", "row"]}>
 							<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-								<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["2", "4"]} mb="2" data-aos="fade-up">
+								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["2", "4"]} mb="2" data-aos="fade-up">
 									Founder
 								</Text>
 								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder1} mt="6" mb="4" data-aos="fade-up" />
@@ -402,7 +405,7 @@ function App() {
 							</Flex>
 
 							<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-								<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["2", "4"]} mb="2" data-aos="fade-up">
+								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["2", "4"]} mb="2" data-aos="fade-up">
 									Artist
 								</Text>
 								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder2} mt="6" mb="4" data-aos="fade-up" />
@@ -427,7 +430,7 @@ function App() {
 
 						<Flex w="100%" justify="center" px="10%" direction={["column", "row"]}>
 							<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-								<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 									Developer
 								</Text>
 								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder3} mt="6" mb="4" data-aos="fade-up" />
@@ -450,7 +453,7 @@ function App() {
 							</Flex>
 
 							<Flex direction="column" align="center" w={["100%", "50%"]} mb={["5", "0"]}>
-								<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 									Marketing/Community/Strategy
 								</Text>
 								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder4} mt="6" mb="4" data-aos="fade-up" />
@@ -477,7 +480,7 @@ function App() {
 						<Flex align="center" w={["100%","200%"]} px="10%" direction={["column", "row"]} justify="center">
 
 							<Flex w={["100%", "50%"]} direction="column" align="center">
-								<Text fontWeight="bold" fontSize={["21px", "30px"]} mt={["12", "100px"]} mb="2" data-aos="fade-up">
+								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 									Community/Moderation
 								</Text>
 
