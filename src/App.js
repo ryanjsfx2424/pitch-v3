@@ -47,10 +47,59 @@ const DISCORD_LINK = "https://discord.gg/EVfKShm6"
 const offBlack = "#251811"
 const offBlue = "rgb(95, 159, 255)"
 const sectionHeaderFontSize = ["24px", "36px"]
+const headerBigFS = ["4vh", "6vh"];
+const cardFS = ["1.8vh","2.2vh"]
+const roadmapBulletsFS = ["14px", "16px"]
+
+const visionHeader = [{
+	fontFamily: "PoppinsExtraBold",
+	lineHeight: "100%",
+	fontSize: "24px",
+	marginTop: "3%",
+	marginBottom: "3%"
+  },
+  {
+  fontFamily: "PoppinsExtraBold",
+	lineHeight: "100%",
+	fontSize: "36px",
+	marginTop: "3%",
+	marginBottom: "3%"
+  }
+]
+const visionText = {
+	fontFamily: "PoppinsMedium",
+	lineHeight: "110%",
+	fontSize: "2.2vh",
+	marginBottom: "10%"
+  }  
+
 
 // IMAGE ASSETS
 // img1.png, img2.png are the guys that show up during the initial animation / bounce up and down
 // icon.png is in the upper left part of the screen
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
 
 
 function App() {
@@ -70,6 +119,9 @@ function App() {
 	const [timesCheckedMintState, setTimesCheckedMintState] = useState(0)
 	const [appShow, setAppShow] = useState(true)
 	const [appShowImg, setAppShowImg] = useState(false)
+	const { height, width } = useWindowDimensions();
+
+	let joinDiscordWidth="1%"
 
 	useEffect(() => {
 		Aos.init({ duration: 1500 });
@@ -165,63 +217,66 @@ function App() {
 						</a>
 					</Flex>
 				</Flex>
-				<Flex direction={"column"} className="headerContent">
-					<Text className="headerText headerBig">Football</Text>
-					<Text className="headerText headerBig">Community</Text>
-					<Text className="headerText headerBig">NFTs</Text>
-					<Text className="headerText headerSml" style={{marginTop: 10}}>A new project</Text>
+				<Flex direction={"column"} className="headerContent" marginLeft={["10%", "25%"]} marginTop={["10%", "5%"]}>
+					<Text marginTop fontSize={headerBigFS} className="headerText headerBig">Football</Text>
+					<Text fontSize={headerBigFS} className="headerText headerBig">Community</Text>
+					<Text fontSize={headerBigFS} className="headerText headerBig">NFTs</Text>
+					<Text className="headerText headerSml" marginTop={["12%", "4%"]}>A new project</Text>
 					<Text className="headerText headerSml">all about futbol for</Text>
-					<Text className="headerText headerSml">the degen community.</Text>
-					<button className="headerDiscordButton">Join Discord</button>
+					<Text className="headerText headerSml" marginBottom={["12","4%"]}>the degen community.</Text>
+					<div>
+						<button className="headerDiscordButton">Join Discord</button>
+					</div>
 				</Flex>
 			</Flex>
-			<Flex w="100vw" height="40vh" className='whiteSquareBkg'>
-				<Flex w="70vw" margin="2.5vw 15vw" direction="column">
+			<Flex w="100vw" height={["70vh","40vh"]} className='whiteSquareBkg'>
+				<Flex w="70vw" margin={[["7.5vw 15vw"], ["2.5vw 15vw"]]} direction="column">
 					<Flex direction={["column","row"]}>
-						<Flex className="qCard qCardTopLeft" direction="column">
+
+						<Flex width={["70vw", "25vw"]} height={["15vh","8vw"]} marginBottom={["3%",0]} className="qCard qCardTopLeft" direction="column">
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardYellow qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardYellow qCardButton">Banter here &gt;&gt;&gt;</a>
 							</Flex>
-							<Text className="qCardText qCardTextTop">Are you a football nut</Text>
-							<Text className="qCardText">and want to show off</Text>
-							<Text className="qCardText qCardBottom">your banter skills?</Text>
+							<Text fontSize={cardFS} className="qCardText qCardTextTop">Are you a football nut</Text>
+							<Text fontSize={cardFS} className="qCardText">and want to show off</Text>
+							<Text fontSize={cardFS} className="qCardText qCardBottom">your banter skills?</Text>
 						</Flex>
 						<Flex className="qCard qCardTopRight" direction="column">
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardOrange qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardOrange qCardButton">Celebrate here &gt;&gt;&gt;</a>
 							</Flex>
-							<Text className="qCardText qCardTextTop">Celebrate the glory of</Text>
-							<Text className="qCardText">your team! Shame the players</Text>
-							<Text className="qCardText qCardBottom">flopping to get a foul call!</Text>
+							<Text fontSize={cardFS} className="qCardText qCardTextTop">Celebrate the glory of</Text>
+							<Text fontSize={cardFS} className="qCardText">your team! Shame the players</Text>
+							<Text fontSize={cardFS} className="qCardText qCardBottom">flopping to get a foul call!</Text>
 						</Flex>
 					</Flex>
-					<Flex direction={["column","row"]}>
+					<Flex direction={["column","row"]} width={["70vw", "25vw"]} height={["15vh","8vw"]} marginBottom={["3%",0]}>
 						<Flex className="qCard qCardBottomLeft" direction="column">
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardAqua qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardAqua qCardButton">Play here &gt;&gt;&gt;</a>
 							</Flex>
-							<Text className="qCardText qCardTextTop">Play trivia and</Text>
-							<Text className="qCardText">win autographed jerseys</Text>
-							<Text className="qCardText qCardBottom">from star players!</Text>
+							<Text fontSize={cardFS} className="qCardText qCardTextTop">Play trivia and</Text>
+							<Text fontSize={cardFS} className="qCardText">win autographed jerseys</Text>
+							<Text fontSize={cardFS} className="qCardText qCardBottom">from star players!</Text>
 						</Flex>
-						<Flex className="qCard qCardBottomRight" direction="column">
+						<Flex className="qCard qCardBottomRight" direction="column" width={["70vw", "25vw"]} height={["15vh","8vw"]} marginBottom={["3%",0]}>
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardBlue qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardBlue qCardButton">Enter here &gt;&gt;&gt;</a>
 							</Flex>
-							<Text className="qCardText qCardTextTop">Enter a meme contest</Text>
-							<Text className="qCardText">and win VIP</Text>
-							<Text className="qCardText qCardBottom">match tickets!</Text>
+							<Text fontSize={cardFS} className="qCardText qCardTextTop">Enter a meme contest</Text>
+							<Text fontSize={cardFS} className="qCardText">and win VIP</Text>
+							<Text fontSize={cardFS} className="qCardText qCardBottom">match tickets!</Text>
 						</Flex>
 					</Flex>
 				</Flex>
 			</Flex>
 
 			<Flex direction="column" w="100vw" height="100vh" className='visionBkg'>
-				<Flex direction="column" justify="flex-end" w="40vw" height="100vh" className="visionImage">
+				<Flex direction="column" justify="flex-end" w={["80vw", "40vw"]} height="100vh" className="visionImage" marginLeft={["10vw","30vw"]}>
 					<Image src={pitch_soccer} w="12%" height="12%" />
 					<Text className="visionHeader" fontSize={sectionHeaderFontSize}>What is Pitch?</Text>
 					<Text className="visionText">Pitch is a new startup with a mission to create a community devoted to the future of the beautiful game in web3. It’s a place to have a kickass time and meet fellow fans. Pitch is for fans who love to banter, trivia nuts, gamers, memelords, and any footballer who enjoys a laugh.  Members will be rewarded with killer prizes and NFTs, with access to premium content and exclusive events.</Text>
@@ -235,14 +290,14 @@ function App() {
 				<Flex w="100%" overflow="hidden" mt={["4", "0"]}>
 					<Flex w={["90%", "70%"]} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]} color={offBlack}>
-							<Text fontWeight="bold" ml={["1", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Now</Text>
-							<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up">
+							<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Now</Text>
+							<Flex direction="column" ml={["6", "12"]} w="100%" data-aos="fade-up">
 							<ul>
 								{
 									pitchMaps.map((item, index) => (
 										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
 											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={["18px", "16px"]} fontFamily="PoppinsMedium">{item}</Text>
+												<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 											</li>
 										</Flex>
 									))
@@ -260,8 +315,8 @@ function App() {
 					<Flex ml="20%" w={["90%", "70%"]} direction="column" data-aos="fade-left" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]}>
 
-						<Text fontWeight="bold" ml={["1", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Soon</Text>
-							<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up">
+						<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Soon</Text>
+							<Flex direction="column"ml={["6", "12"]} w="100%" data-aos="fade-up">
 								<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">1st preliminary NFT collection launched Friday Dec 16th 2022:</Text>
 								
 								<ul>
@@ -269,28 +324,27 @@ function App() {
 									pitchMaps2.map((item, index) => (
 										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
 											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={["18px", "16px"]} fontFamily="PoppinsMedium">{item}</Text>
+												<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 											</li>
 										</Flex>
 									))
 								}
 							</ul>
 							</Flex>
-							<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up" mt="6">
-							<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">Holder benefits include:</Text>
-								<ul>
-								{
-									pitchMaps3.map((item, index) => (
-										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
-											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={["18px", "16px"]} fontFamily="PoppinsMedium">{item}</Text>
-											</li>
-										</Flex>
-									))
-								}
-							</ul>
+							<Flex direction="column" ml={["6", "12"]} w="100%" data-aos="fade-up" mt="6">
+								<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">Holder benefits include:</Text>
+									<ul>
+									{
+										pitchMaps3.map((item, index) => (
+											<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
+												<li>
+													<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
+												</li>
+											</Flex>
+										))
+									}
+								</ul>
 							</Flex>
-
 						</Text>
 					</Flex>
 				</Flex>
@@ -298,8 +352,8 @@ function App() {
 				<Flex w="100%" overflow="hidden" mt={["6", "12"]}>
 					<Flex w={["90%", "70%"]} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]} color={offBlack}>
-							<Text fontWeight="bold" ml={["1", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Future</Text>
-							<Flex direction="column" ml={["1", "12"]} w="100%" data-aos="fade-up">
+							<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Future</Text>
+							<Flex direction="column" ml={["6", "12"]} w="100%" data-aos="fade-up">
 							<ul>
 								{
 									pitchMaps4.map((item, index) => (
