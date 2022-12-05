@@ -65,7 +65,7 @@ input, textarea {
   background-color: transparent;
 }
 .pitchNavbar {
-  background-color: white;
+  background-color: #7DE279;
   color: #251811;
   margin: 0 auto;
   margin-top: 1%;
@@ -100,11 +100,16 @@ input, textarea {
 }
 
 .headerDiscordButton {
-  background-color: yellow;
+  background-color: #E3FD00;
   width: 20%;
   font-family: PoppinsMedium;
   color: #251811;
   margin-top: 4%;
+  font-size: 200%;
+  border-radius: 12px;
+  border: 2px solid black;
+  box-shadow: 4px 4px;
+
 }
 
 .headerBig {
@@ -197,20 +202,28 @@ input, textarea {
 
 .qCardTopLeft {
   margin-right: 3%;
+  width: 25vw;
+  height: 8vw;
 }
 
 .qCardTopRight {
   margin-left: 3%;
+  width: 25vw;
+  height: 8vw;
 }
 
 .qCardBottomLeft {
   margin-right: 3%;
   margin-top: 3%;
+  width: 25vw;
+  height: 8vw;
 }
 
 .qCardBottomRight {
   margin-left: 3%;
   margin-top: 3%;
+  width: 25vw;
+  height: 8vw;
 }
 
 .visionBkg {  
@@ -236,7 +249,7 @@ input, textarea {
   font-family: PoppinsMedium;
   line-height: 110%;
   font-size: 2.2vh;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 .roadmapBkg {

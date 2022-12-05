@@ -29,21 +29,6 @@ import founder3 from "./luna.webp";
 import founder4 from "./uv.webp";
 import founder5 from "./fede.webp";
 import founder3small from "./founder3small.png";
-import show1 from "./show1.png";
-import show2 from "./show2.png";
-import show3 from "./show3.png";
-import show4 from "./show4.png";
-import show5 from "./show5.png";
-import show6 from "./show6.png";
-import show7 from "./show7.png";
-import show8 from "./show8.png";
-import show9 from "./show9.png";
-import show10 from "./show10.png";
-import show11 from "./show11.png";
-import show12 from "./show12.png";
-import show13 from "./show13.png";
-import show14 from "./show14.png";
-import show15 from "./show15.png";
 // import Banner from "./header.jpeg";
 import Banner from "./Banner.jpg";
 import Ticket from "./ticket.png";
@@ -61,6 +46,7 @@ const INSTAGRAM_LINK = "https://www.instagram.com/pitch.nft/";
 const DISCORD_LINK = "https://discord.gg/EVfKShm6"
 const offBlack = "#251811"
 const offBlue = "rgb(95, 159, 255)"
+const sectionHeaderFontSize = ["24px", "36px"]
 
 // IMAGE ASSETS
 // img1.png, img2.png are the guys that show up during the initial animation / bounce up and down
@@ -94,8 +80,6 @@ function App() {
 			setAppShow(true)
 		}, 2000)
 	}, []);
-
-	const showCase = [show1, show2, show3, show4, show5, show6, show7, show8]//, show9, show10, show11, show12, show13, show14, show15]
 
 	// const pitchMaps = [ "World Cup excitement! Discord action centered around the tournament.", 
 	// 				"Banter, memes and frequent contests with amazing prizes.", 
@@ -188,7 +172,7 @@ function App() {
 					<Text className="headerText headerSml" style={{marginTop: 10}}>A new project</Text>
 					<Text className="headerText headerSml">all about futbol for</Text>
 					<Text className="headerText headerSml">the degen community.</Text>
-					<Button className="headerDiscordButton">Join Discord</Button>
+					<button className="headerDiscordButton">Join Discord</button>
 				</Flex>
 			</Flex>
 			<Flex w="100vw" height="40vh" className='whiteSquareBkg'>
@@ -238,15 +222,15 @@ function App() {
 
 			<Flex direction="column" w="100vw" height="100vh" className='visionBkg'>
 				<Flex direction="column" justify="flex-end" w="40vw" height="100vh" className="visionImage">
-					<Image src={pitch_soccer} w="24%" height="12%" />
-					<Text className="visionHeader">What is Pitch?</Text>
+					<Image src={pitch_soccer} w="12%" height="12%" />
+					<Text className="visionHeader" fontSize={sectionHeaderFontSize}>What is Pitch?</Text>
 					<Text className="visionText">Pitch is a new startup with a mission to create a community devoted to the future of the beautiful game in web3. It’s a place to have a kickass time and meet fellow fans. Pitch is for fans who love to banter, trivia nuts, gamers, memelords, and any footballer who enjoys a laugh.  Members will be rewarded with killer prizes and NFTs, with access to premium content and exclusive events.</Text>
 				</Flex>
 			</Flex>
 
 			<Flex minHeight="100vh" w="100%" direction="column" backgroundImage={roadmap_tile} color="#fff" fontFamily="chalk" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
 				
-				<Text className="RoadMapHeaderText">Roadmap</Text>
+				<Text className="RoadMapHeaderText" fontSize={sectionHeaderFontSize}>Roadmap</Text>
 				<Text id="rdMap" visibility="hidden"></Text>
 				<Flex w="100%" overflow="hidden" mt={["4", "0"]}>
 					<Flex w={["90%", "70%"]} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
@@ -334,7 +318,7 @@ function App() {
 
 				<Flex justify="center" mt={["6", "12"]} backgroundColor="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" py="12" color={offBlack} fontFamily="PoppinsMedium">
 					<Flex w="100%" direction="column" align="center">
-						<Text fontWeight="bold" fontSize={["24px", "36px"]} color={offBlue} fontFamily="PoppinsExtraBold">
+						<Text fontWeight="bold" fontSize={sectionHeaderFontSize} color={offBlue} fontFamily="PoppinsExtraBold">
 							The Team
 						</Text>
 						<Flex w="100%" justify="center" px="10%" direction={["column", "row"]}>
@@ -471,11 +455,11 @@ function App() {
 				</Flex>
 			</Flex>
 
-			<Flex minHeight="100vh" w="100%" direction="column" bg="linear-gradient(290deg, rgb(24, 56, 41), rgb(43, 125, 87))" color="white" fontFamily="PoppinsMedium" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
+			<Flex minHeight="100vh" w="100%" direction="column" bg="#1D8E65" color="white" fontFamily="PoppinsMedium" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
 				<Flex w="100%" mt={["6", "12"]} data-aos="fade-up" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" direction="column" align="center">
 						<Flex align="flex-start" direction={["column", "row"]}>
 							<Text>
-								<Text fontWeight="bold" fontSize="30px">
+								<Text fontWeight="bold" fontSize={sectionHeaderFontSize} fontFamily="PoppinsExtraBold">
 									FAQ
 								</Text>
 
