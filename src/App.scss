@@ -245,6 +245,18 @@ input, textarea {
   background-size: cover;
 }
 
+.RoadMapHeaderText {
+  font-size: 3vh;
+  font-family: PoppinsExtraBold;
+  color: #251811;
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.roadmapBox {
+  box-shadow: 6px 6px;;
+}
+
 @keyframes bounce2 {
   0% { background: rgba(255,255,255,0.4);}
   100% { background: rgba(255,255,255,0.1);}
