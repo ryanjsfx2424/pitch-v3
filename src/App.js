@@ -332,7 +332,7 @@ function App() {
 					</Flex>
 				</Flex>
 
-				<Flex justify="center" mt={["6", "12"]} backgroundColor="white" borderRadius="8px" py="12" color={offBlack} fontFamily="PoppinsMedium">
+				<Flex justify="center" mt={["6", "12"]} backgroundColor="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" py="12" color={offBlack} fontFamily="PoppinsMedium">
 					<Flex w="100%" direction="column" align="center">
 						<Text fontWeight="bold" fontSize={["24px", "36px"]} color={offBlue} fontFamily="PoppinsExtraBold">
 							The Team
