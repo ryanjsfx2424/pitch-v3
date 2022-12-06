@@ -96,7 +96,7 @@ input, textarea {
 
 .headerDiscordButton {
   background-color: #E3FD00;
-  font-family: PoppinsMedium;
+  font-family: PoppinsExtraBold;
   color: #251811;
   padding: 0 3%;
   font-size: 200%;
@@ -216,6 +216,12 @@ input, textarea {
 
 .visionImage {
   background: url('./VisionImage.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pitchSoccerVisonImage {
+  background: url('./pitch_soccer.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

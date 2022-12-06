@@ -48,11 +48,13 @@ const offBlack = "#251811"
 const offBlue = "rgb(95, 159, 255)"
 const sectionHeaderFontSize = ["24px", "36px"]
 const headerBigFS = ["4vh", "6vh"];
-const cardFS = ["1.8vh","2.2vh"]
 const roadmapBulletsFS = ["14px", "16px"]
-const qCardWidth  = ["70vw", "20vw"]
-const qCardHeight = ["15vh", "8vw"]
-const teamTitlesFS = ["18px", "30px"]
+const cardFS = ["1.7vh","2.2vh"]
+const qCardWidth  = ["80vw", "20vw"]
+const qCardHeight = ["16vh", "8vw"]
+const teamImageWidth = ["85px", "200px"]
+const teamImageHeight = teamImageWidth;
+const teamTitlesFS = ["16px", "30px"]
 
 const visionHeader = [{
 	fontFamily: "PoppinsExtraBold",
@@ -256,7 +258,7 @@ function App() {
 						</Flex>
 					</Flex>
 					<Flex direction={["column","row"]} marginBottom={["3%",0]}>
-						<Flex className="qCard" direction="column" width={qCardWidth} height={qCardHeight} marginRight={["0", "3%"]}>
+						<Flex className="qCard" direction="column" width={qCardWidth} height={qCardHeight} marginRight={["0", "3%"]} marginBottom={["3%", "0"]}>
 							<Flex direction="row" justify="space-between" className="qCardTop">
 								<Flex className="qCardAqua qCardXFlex"><Text className='qCardX'>x</Text></Flex>
 								<a href={DISCORD_LINK} className="qCardAqua qCardButton">Play here &gt;&gt;&gt;</a>
@@ -280,7 +282,7 @@ function App() {
 
 			<Flex direction="column" w="100vw" height="100vh" className='visionBkg'>
 				<Flex direction="column" justify="flex-end" w={["80vw", "40vw"]} height="100vh" className="visionImage" marginLeft={["10vw","30vw"]}>
-					<Image src={pitch_soccer} w="12%" height="12%" />
+					<Flex className="pitchSoccerVisonImage" w="100px" height="100px"/>
 					<Text className="visionHeader" fontSize={sectionHeaderFontSize}>What is Pitch?</Text>
 					<Text className="visionText">Pitch is a new startup with a mission to create a community devoted to the future of the beautiful game in web3. It’s a place to have a kickass time and meet fellow fans. Pitch is for fans who love to banter, trivia nuts, gamers, memelords, and any footballer who enjoys a laugh.  Members will be rewarded with killer prizes and NFTs, with access to premium content and exclusive events.</Text>
 				</Flex>
@@ -362,7 +364,7 @@ function App() {
 									pitchMaps4.map((item, index) => (
 										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
 											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={["18px", "16px"]} fontFamily="PoppinsMedium">{item}</Text>
+												<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 											</li>
 										</Flex>
 									))
@@ -383,7 +385,7 @@ function App() {
 								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["2", "4"]} mb="2" data-aos="fade-up">
 									Founder
 								</Text>
-								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder1} mt="6" mb="4" data-aos="fade-up" />
+								<Image w={teamImageWidth} h={teamImageHeight} borderRadius="100%" src={founder1} mt="6" mb="4" data-aos="fade-up" />
 								
 								<Accordion allowToggle>
 									<AccordionItem>
@@ -408,7 +410,7 @@ function App() {
 								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["2", "4"]} mb="2" data-aos="fade-up">
 									Artist
 								</Text>
-								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder2} mt="6" mb="4" data-aos="fade-up" />
+								<Image w={teamImageWidth} h={teamImageHeight} borderRadius="100%" src={founder2} mt="6" mb="4" data-aos="fade-up" />
 
 								<Accordion allowToggle>
 									<AccordionItem>
@@ -433,7 +435,7 @@ function App() {
 								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 									Developer
 								</Text>
-								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder3} mt="6" mb="4" data-aos="fade-up" />
+								<Image w={teamImageWidth} h={teamImageHeight} borderRadius="100%" src={founder3} mt="6" mb="4" data-aos="fade-up" />
 
 								<Accordion allowToggle>
 									<AccordionItem>
@@ -456,7 +458,7 @@ function App() {
 								<Text fontWeight="bold" fontSize={teamTitlesFS} mt={["12", "100px"]} mb="2" data-aos="fade-up">
 									Marketing/Community/Strategy
 								</Text>
-								<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder4} mt="6" mb="4" data-aos="fade-up" />
+								<Image w={teamImageWidth} h={teamImageHeight} borderRadius="100%" src={founder4} mt="6" mb="4" data-aos="fade-up" />
 								
 								<Accordion allowToggle>
 									<AccordionItem>
@@ -486,7 +488,7 @@ function App() {
 
 								<Flex w="100%" align="center" justify="center" px="0%" direction={["column", "row"]}>
 									<Flex direction="column" align="center" w={["100%", "50%"]}>
-										<Image w={["170px", "200px"]} h={["170px", "200px"]} borderRadius="100%" src={founder5} mt="6" mb="4" data-aos="fade-up" />
+										<Image w={teamImageWidth} h={teamImageHeight} borderRadius="100%" src={founder5} mt="6" mb="4" data-aos="fade-up" />
 
 										<Accordion allowToggle>
 											<AccordionItem>
@@ -520,7 +522,7 @@ function App() {
 									FAQ
 								</Text>
 
-								<Text mb="4" fontSize={["17px", "24px"]} mr="40">
+								<Text mb="4" fontSize={["17px", "24px"]} mr={["0","40"]}>
 								This page will be continually updated so check back for unanswered questions!
 								</Text>
 
