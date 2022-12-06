@@ -50,11 +50,12 @@ const sectionHeaderFontSize = ["24px", "36px"]
 const headerBigFS = ["4vh", "6vh"];
 const roadmapBulletsFS = ["14px", "16px"]
 const cardFS = ["1.7vh","2.2vh"]
-const qCardWidth  = ["80vw", "20vw"]
-const qCardHeight = ["16vh", "8vw"]
+const qCardWidth  = ["80vw", "25vw"]
+const qCardHeight = ["16vh", "15vh"]
 const teamImageWidth = ["85px", "200px"]
 const teamImageHeight = teamImageWidth;
 const teamTitlesFS = ["16px", "30px"]
+const roadmapCardWidth = ["90%", "40%"]
 
 const visionHeader = [{
 	fontFamily: "PoppinsExtraBold",
@@ -214,11 +215,11 @@ function App() {
 				<Flex className='pitchNavbar' justify="space-between">
 					<Image src={pitch_icon} className="pitchNavbarLogo" h="80%"/>
 					<Flex>
-						<a href={DISCORD_LINK}>
-							<Image src={discord_icon} className="pitchDiscordIcon" />
+						<a>
+							<Image src={discord_icon} className="pitchDiscordIcon" onClick={() => window.open("https://discord.gg/EVfKShm6", "_BLANK")} />
 						</a>
-						<a href={TWITTER_LINK} style={{margin:0, padding:0}}>
-							<Image src={twitter_icon} className="pitchTwitterIcon" />
+						<a style={{margin:0, padding:0, cursor:"pointer"}}>
+							<Image src={twitter_icon} className="pitchTwitterIcon" onClick={() => window.open("https://twitter.com/pitchweb3", "_BLANK")} />
 						</a>
 					</Flex>
 				</Flex>
@@ -293,7 +294,7 @@ function App() {
 				<Text className="RoadMapHeaderText" fontSize={sectionHeaderFontSize}>Roadmap</Text>
 				<Text id="rdMap" visibility="hidden"></Text>
 				<Flex w="100%" overflow="hidden" mt={["4", "0"]}>
-					<Flex w={["90%", "70%"]} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
+					<Flex w={roadmapCardWidth} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]} color={offBlack}>
 							<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Now</Text>
 							<Flex direction="column" ml={["6", "12"]} w="100%" data-aos="fade-up">
@@ -317,7 +318,7 @@ function App() {
 
 				<Flex w="100%" mt={["6", "12"]} overflow="hidden" color={offBlack}>	
 					{/* <Flex w={["10%", "30%"]} mt="100px" borderTop={["8px solid rgba(255,255,255,0.05)", "15px solid rgba(255,255,255,0.05)"]} borderLeft={["8px solid rgba(255,255,255,0.05)", "15px solid rgba(255,255,255,0.05)"]} borderTopLeftRadius="15px"></Flex> */}
-					<Flex ml="20%" w={["90%", "70%"]} direction="column" data-aos="fade-left" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
+					<Flex ml="20%" w={roadmapCardWidth} direction="column" data-aos="fade-left" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]}>
 
 						<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Soon</Text>
@@ -355,7 +356,7 @@ function App() {
 				</Flex>
 
 				<Flex w="100%" overflow="hidden" mt={["6", "12"]}>
-					<Flex w={["90%", "70%"]} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
+					<Flex w={roadmapCardWidth} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]} color={offBlack}>
 							<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Future</Text>
 							<Flex direction="column" ml={["6", "12"]} w="100%" data-aos="fade-up">
@@ -516,59 +517,51 @@ function App() {
 
 			<Flex minHeight="100vh" w="100%" direction="column" bg="#1D8E65" color="white" fontFamily="PoppinsMedium" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
 				<Flex w="100%" mt={["6", "12"]} data-aos="fade-up" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" direction="column" align="center">
-						<Flex align="flex-start" direction={["column", "row"]}>
-							<Text>
-								<Text fontWeight="bold" fontSize={sectionHeaderFontSize} fontFamily="PoppinsExtraBold">
-									FAQ
-								</Text>
-
-								<Text mb="4" fontSize={["17px", "24px"]} mr={["0","40"]}>
-								This page will be continually updated so check back for unanswered questions!
-								</Text>
-
-								<Accordion allowToggle>
-									{
-										pitchQs.map((item, index) => (
-											<AccordionItem>
-												<AccordionButton>
-													<Flex flex='1' textAlign='left' mb="4" fontSize={["17px", "24px"]}>
-														{item.split(" ANSWER ")[0]}
-													</Flex>
-													<AccordionIcon />
-												</AccordionButton>
-												<AccordionPanel pb={4}>
-													<Text mb="4" fontSize={["17px", "24px"]}>
-														{item.split(" ANSWER ")[1]}
-													</Text>
-												</AccordionPanel>
-											</AccordionItem>
-										))
-									}
-
-								</Accordion>
+					<Flex align="flex-start" direction={["column", "row"]}>
+						<Text>
+							<Text fontWeight="bold" fontSize={sectionHeaderFontSize} fontFamily="PoppinsExtraBold">
+								FAQ
 							</Text>
-						</Flex>
-					</Flex>
-					
-					<Flex direction="column" mt={["6", "12"]} bgColor="rgba(255,255,255,0.03)" borderRadius="8px" py="12" px={["6", "0"]}>
-						<Text align="center">
-							Copyright © 2022 Pitch Web3. All rights reserved.
+
+							<Text mb="4" fontSize={["17px", "24px"]} mr={["0","40"]}>
+							This page will be continually updated so check back for unanswered questions!
+							</Text>
+
+							<Accordion allowToggle>
+								{
+									pitchQs.map((item, index) => (
+										<AccordionItem>
+											<AccordionButton>
+												<Flex flex='1' textAlign='left' mb="4" fontSize={["17px", "24px"]}>
+													{item.split(" ANSWER ")[0]}
+												</Flex>
+												<AccordionIcon />
+											</AccordionButton>
+											<AccordionPanel pb={4}>
+												<Text mb="4" fontSize={["17px", "24px"]}>
+													{item.split(" ANSWER ")[1]}
+												</Text>
+											</AccordionPanel>
+										</AccordionItem>
+									))
+								}
+
+							</Accordion>
 						</Text>
-						<Flex flex="1" align="center" justify="center" mt="8"  data-aos="fade-up">
-							<a href={TWITTER_LINK}>
-								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open({TWITTER_LINK}, "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
-							</a>
-
-							<a href={DISCORD_LINK}>
-								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open({DISCORD_LINK}, "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
-							</a>
-
-							<a href={INSTAGRAM_LINK}>
-								<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open({INSTAGRAM_LINK}, "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
-							</a>
-						</Flex>
 					</Flex>
 				</Flex>
+					
+				<Flex direction="column" mt={["6", "12"]} bgColor="rgba(255,255,255,0.03)" borderRadius="8px" py="12" px={["6", "0"]}>
+					<Text align="center">
+						Copyright © 2022 Pitch Web3. All rights reserved.
+					</Text>
+					<Flex flex="1" align="center" justify="center" mt="8"  data-aos="fade-up">
+						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open("https://twitter.com/pitchweb3", "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
+						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open("https://discord.gg/EVfKShm6", "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
+						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open("https://www.instagram.com/pitch.nft/", "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
+					</Flex>
+				</Flex>
+			</Flex>
 		</ChakraProvider>
 	)
 }
