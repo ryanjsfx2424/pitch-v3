@@ -148,12 +148,11 @@ function App() {
 		"World Cup excitement, banter and community events with frequent prizes given!",
 		"Football trivia and game prediction leaderboard",
 		"Meme contests and fan art contests",
-		"FIFA 21 gaming tournament",
+		"FIFA 23 gaming tournament",
 		"Twitter Space co-hosted by professional commentator during WC games",
 		"Discord coin economy redeemable in merch store",
 		"Prize pool of 20+ items including signed gear by star players",
-		"Pitch will organize and cover the tab of your group’s watch party (2 each week)",
-		"Art preview for 1st NFT collection and mint details released"
+		"Pitch will organize and cover the tab of your group’s watch party (2 each week)"
 	]
 
 // 	const pitchMaps2 = [ "1st mini NFT collection launched Dec 15. Basic benefits include access to grand prizes for WC final; airdrops and access to project collaborations; allow-list spot for Pitch's main PFP collection launch in mid-January.", 
@@ -301,9 +300,9 @@ function App() {
 							<ul>
 								{
 									pitchMaps.map((item, index) => (
-										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
+										<Flex key={index} w="80%" justify="space-between">
 											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
+												<Text w="100%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 											</li>
 										</Flex>
 									))
@@ -328,9 +327,9 @@ function App() {
 								<ul>
 								{
 									pitchMaps2.map((item, index) => (
-										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
+										<Flex key={index} w="80%" justify="space-between">
 											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
+												<Text w="100%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 											</li>
 										</Flex>
 									))
@@ -342,9 +341,9 @@ function App() {
 									<ul>
 									{
 										pitchMaps3.map((item, index) => (
-											<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
+											<Flex key={index} w="80%" justify="space-between">
 												<li>
-													<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
+													<Text w="100%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 												</li>
 											</Flex>
 										))
@@ -363,9 +362,9 @@ function App() {
 							<ul>
 								{
 									pitchMaps4.map((item, index) => (
-										<Flex key={index} w="100%" justify="space-between" pr={["0", "10%"]}>
+										<Flex key={index} w="80%" justify="space-between">
 											<li>
-												<Text w="90%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
+												<Text w="100%" mt={["0", "3"]} fontSize={roadmapBulletsFS} fontFamily="PoppinsMedium">{item}</Text>
 											</li>
 										</Flex>
 									))
@@ -398,7 +397,7 @@ function App() {
 											</AccordionButton>
 											<AccordionPanel pb={4}>
 												<Text fontSize={["14px", "18px"]} textAlign="center" px={["2%", "10%"]} mt="6" data-aos="fade-up">
-													A data scientist turned entrepreneur, with a renewed focus on leadership & product development, and experience across tech, finance, and philanthropy.  Pursuing web3 ventures full-time after leaving a senior management role at Facebook earlier this year.  A lifelong player, fan and coach…rooting for Team USA in the World Cup!
+													A data scientist turned entrepreneur with experience across tech, finance, and philanthropy.  Pursuing web3 ventures full-time after leaving a senior management role at Facebook earlier this year.  A lifelong player, fan and coach…go Pulisic and Team USA
 												</Text>
 											</AccordionPanel>
 										</AccordionItem>
