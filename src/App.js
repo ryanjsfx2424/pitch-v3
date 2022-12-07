@@ -51,7 +51,7 @@ const headerBigFS = ["4vh", "6vh"];
 const roadmapBulletsFS = ["14px", "16px"]
 const cardFS = ["1.7vh","2.2vh"]
 const qCardWidth  = ["80vw", "25vw"]
-const qCardHeight = ["16vh", "15vh"]
+const qCardHeight = ["16vh", "18vh"]
 const teamImageWidth = ["85px", "200px"]
 const teamImageHeight = teamImageWidth;
 const teamTitlesFS = ["16px", "30px"]
@@ -222,11 +222,11 @@ function App() {
 						</a>
 					</Flex>
 				</Flex>
-				<Flex direction={"column"} className="headerContent" marginLeft={["10%", "25%"]} marginTop={["10%", "5%"]}>
+				<Flex direction={"column"} marginLeft={["10%", "25%"]} marginTop={["10%", "5vh"]}>
 					<Text marginTop fontSize={headerBigFS} className="headerText headerBig">Football</Text>
 					<Text fontSize={headerBigFS} className="headerText headerBig">Community</Text>
 					<Text fontSize={headerBigFS} className="headerText headerBig">NFTs</Text>
-					<Text className="headerText headerSml" marginTop={["12%", "4%"]}>A new project</Text>
+					<Text className="headerText headerSml" marginTop={["12%", "4vh"]}>A new project</Text>
 					<Text className="headerText headerSml">all about futbol for</Text>
 					<Text className="headerText headerSml" marginBottom={["12","2%"]}>the degen community.</Text>
 					<div>
@@ -234,7 +234,7 @@ function App() {
 					</div>
 				</Flex>
 			</Flex>
-			<Flex w="100vw" height={["70vh","40vh"]} className='whiteSquareBkg'>
+			<Flex w="100vw" height={["80vh","45vh"]} className='whiteSquareBkg'>
 				<Flex w="70vw" margin={[["7.5vw 15vw"], ["2vw 15vw"]]} direction="column">
 					<Flex direction={["column","row"]}>
 
