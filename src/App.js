@@ -234,7 +234,7 @@ function App() {
 					</div>
 				</Flex>
 			</Flex>
-			<Flex w="100vw" height={["80vh","45vh"]} className='whiteSquareBkg'>
+			<Flex w="100vw" height={["80vh","50vh"]} className='whiteSquareBkg'>
 				<Flex w="70vw" margin={[["7.5vw 15vw"], ["2vw 15vw"]]} direction="column">
 					<Flex direction={["column","row"]}>
 
