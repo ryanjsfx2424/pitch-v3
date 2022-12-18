@@ -162,7 +162,7 @@ const Homepage = () => {
 	const pitchMaps2 = [
 		"Ethereum Mainnet ERC-1155 tokens",
 		"Supply of 640 tokens",
-		"Mint price of 0.02 ETH"
+		"Mint price of 0.02 ETH WL, 0.03 ETH Public"
 	]
 
 // 	const pitchMaps3 = [ "January: main launch of main PFP generative NFT collection.", 
@@ -203,7 +203,7 @@ const Homepage = () => {
 		"5. What will the first Pitch NFT collection include? ANSWER Our first NFT collection will be a limited edition for our OG members which will include special perks, exclusive giveaways and priority in subsequent collection mint.",
 		"6. When is the mint? ANSWER December 19th",
 		"7. What’s the supply? ANSWER 640 tokens",
-		"8. How much is mint? ANSWER 0.02 eth",
+		"8. How much is mint? ANSWER 0.02 eth WL, 0.03 eth Public",
 		"9. Which blockchain will the NFT mint be on? ANSWER All tokens will mint on Ethereum network.",
 		"10. Will there be allow lists? ANSWER Yes! Stay tuned for more updates; get an advantage by staying active, helping your fellow members and growing our community. The team is watching and will certainly award any enthusiastic members."
 	]
@@ -322,7 +322,7 @@ const Homepage = () => {
 
 						<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Soon</Text>
 							<Flex direction="column"ml={["6", "12"]} w="100%" data-aos="fade-up">
-								<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">1st preliminary NFT collection launched Friday Dec 16th 2022:</Text>
+								<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">1st preliminary NFT collection launched Monday Dec 19th 2022:</Text>
 								
 								<ul>
 								{
