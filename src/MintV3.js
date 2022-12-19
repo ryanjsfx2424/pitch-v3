@@ -124,6 +124,7 @@ const Mint = () => {
                 console.log("got account: ", account)
             } catch {
                 setErrMessage("err get account")
+                alert("error grabbing account")
                 setConnectError(true)
                 console.log("error grabbing account");
                 account = "";
@@ -135,8 +136,8 @@ const Mint = () => {
                 try {
                     chainId = await window.ethereum.request({method: 'net_version'})
                 } catch {
-                    setErrMessage("error grabbing account")
-                    // alert("error grabbing account")
+                    setErrMessage("account err")
+                    alert("error grabbing account")
                     setConnectError(true)
                     console.log("err get account");
                     chainId = -1;
@@ -150,7 +151,7 @@ const Mint = () => {
                     return {success: true}
                 } else {
                     setIsCorrectChain(false)
-                    // alert("Change chain to " + CHAIN_NAME);
+                    alert("Change chain to " + CHAIN_NAME);
                     setErrMessage("Not on " + CHAIN_NAME)
                     setConnectError(true)
                     return {success: false}
@@ -158,14 +159,14 @@ const Mint = () => {
             } else {
                 setIsWalletConnected(false)
                 setIsCorrectChain(false)
-                // alert("Could not get account - have you logged into metamask?")
-                setErrMessage("No web3 account(?)")
+                alert("Could not get account - have you logged into metamask?")
+                setErrMessage("No web3(?)")
                 setConnectError(true)
                 return {success: false}
             }
         } else {
-            // alert("install metamask extension!!");
-            setErrMessage("No web3 detected")
+            alert("install metamask or coinbase wallet extension!!");
+            setErrMessage("No web3")
             setConnectError(true)
             return {success: false}
         }
@@ -415,7 +416,11 @@ const Mint = () => {
                 <Flex w={["100%", "50%"]} height={["70%"]} mt={["0", "12"]} bg="rgba(255,255,255,0.05)" borderRadius="8px" ml={[0, "25%"]} padding={["4%","1%"]} direction="column" align="center">
                     <h1 className="mintHeader" fontFamily="PoppinsExtraBold" fontSize="24px">Pitch Mint</h1>
 
-                    <Text marginBottom="12px">Wallet Address: 0x...{window.ethereum.selectedAddress ? String(window.ethereum.selectedAddress).substring(String(window.ethereum.selectedAddress.length - 4)) : "????"}</Text>
+                    {(window.ethereum && window.ethereum.selectedAddress) ?
+                        <Text marginBottom="12px">Wallet Address: 0x...{String(window.ethereum.selectedAddress).substring(String(window.ethereum.selectedAddress.length - 4))}</Text>
+                    :
+                        <Text marginBottom="12px">Wallet Address: 0x...????</Text>
+                    }
                     {!isWalletConnected && !connectError &&
                         <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleConnectWallet}>Connect Wallet</button>
                     }
