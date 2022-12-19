@@ -45,8 +45,6 @@ const Mint = () => {
     const [totalSupply,       setTotalSupply      ] = useState("???/640");
     const [tokenIndex,        setTokenIndex       ] = useState(0);
     const [isVideoLoaded,     setIsVideoLoaded    ] = useState(false);
-    const [connectError,     setConnectError      ] = useState(false);
-    const [errMessage, setErrMessage] = useState("");
 
     function mod(n, m) {
         return ((n % m) + m) % m;
@@ -123,8 +121,7 @@ const Mint = () => {
                 account = accounts[0]
                 console.log("got account: ", account)
             } catch {
-                setErrMessage("err get account")
-                setConnectError(true)
+                alert("error grabbing account")
                 console.log("error grabbing account");
                 account = "";
                 return {success: false}
@@ -135,10 +132,8 @@ const Mint = () => {
                 try {
                     chainId = await window.ethereum.request({method: 'net_version'})
                 } catch {
-                    setErrMessage("error grabbing account")
-                    // alert("error grabbing account")
-                    setConnectError(true)
-                    console.log("err get account");
+                    alert("error grabbing account")
+                    console.log("error grabbing account");
                     chainId = -1;
                     return {success: false}
                 }
@@ -150,23 +145,17 @@ const Mint = () => {
                     return {success: true}
                 } else {
                     setIsCorrectChain(false)
-                    // alert("Change chain to " + CHAIN_NAME);
-                    setErrMessage("Not on " + CHAIN_NAME)
-                    setConnectError(true)
+                    alert("Change chain to " + CHAIN_NAME);
                     return {success: false}
                 }
             } else {
                 setIsWalletConnected(false)
                 setIsCorrectChain(false)
-                // alert("Could not get account - have you logged into metamask?")
-                setErrMessage("No web3 account(?)")
-                setConnectError(true)
+                alert("Could not get account - have you logged into metamask?")
                 return {success: false}
             }
         } else {
-            // alert("install metamask extension!!");
-            setErrMessage("No web3 detected")
-            setConnectError(true)
+            alert("install metamask extension!!");
             return {success: false}
         }
     };
@@ -416,17 +405,14 @@ const Mint = () => {
                     <h1 className="mintHeader" fontFamily="PoppinsExtraBold" fontSize="24px">Pitch Mint</h1>
 
                     <Text marginBottom="12px">Wallet Address: 0x...{window.ethereum.selectedAddress ? String(window.ethereum.selectedAddress).substring(String(window.ethereum.selectedAddress.length - 4)) : "????"}</Text>
-                    {!isWalletConnected && !connectError &&
+                    {!isWalletConnected &&
                         <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleConnectWallet}>Connect Wallet</button>
                     }
-                    {isWalletConnected && !isButtonDisabled && !connectError &&
+                    {isWalletConnected && !isButtonDisabled &&
                         <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleMint}>Mint</button>
                     }
-                    {isWalletConnected && isButtonDisabled && !connectError &&
+                    {isWalletConnected && isButtonDisabled &&
                         <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleMint}>Busy</button>
-                    }
-                    {connectError &&
-                        <button className="ConnectMintButton" disabled={connectError} onClick={handleConnectWallet}>{errMessage}</button>
                     }
 
                     <Flex marginTop="24px" marginBottom="12px" direction="row">

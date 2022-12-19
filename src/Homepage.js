@@ -106,7 +106,10 @@ const Homepage = () => {
 					<Text className="headerText headerSml">all about futbol for</Text>
 					<Text className="headerText headerSml" marginBottom={["12","2%"]}>the degen community.</Text>
 					<div>
-						<button className="headerDiscordButton">Join Discord</button>
+						<button className="headerDiscordButton" onClick={() => window.open("https://discord.gg/HhJNjZjupz", "_BLANK")}>Join Discord</button>
+					</div>
+					<div>
+						<button className="headerDiscordButton2" onClick={() => window.open("https://pitchweb3.com/mint", "_BLANK")}>Mint</button>
 					</div>
 				</Flex>
 			</Flex>
