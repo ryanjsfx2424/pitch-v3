@@ -17,11 +17,9 @@ function Navbar() {
 			<Image src={pitch_icon} className="pitchNavbarLogo" h="80%"/>
 
 			<Flex>
-				{isMintPage &&
-					<div style={{cursor:"pointer"}}>
-						<Image src={opensea_icon} className="pitchOpenseaIcon" onClick={() => window.open("https://testnets.opensea.io/collection/pitch-og-pass-goerli", "_BLANK")} />
-					</div>
-				}
+				<div style={{cursor:"pointer"}}>
+					<Image src={opensea_icon} className="pitchOpenseaIcon" onClick={() => window.open("https://opensea.io/collection/pitch-og-pass", "_BLANK")} />
+				</div>
                 <div style={{cursor:"pointer"}}>
                     <Image src={discord_icon} className="pitchDiscordIcon" onClick={() => window.open("http://discord.gg/HhJNjZjupz", "_BLANK")} />
                 </div>
