@@ -1,15 +1,25 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Homepage from "./Homepage";
-import Mint from "./components/Mint";
+import Mint from "./Mint";
 
 function App() {
+	const url = window.location.href;
+	const isMintPage = url.includes("mint");
 	return (
-		<Routes>
+		<>
+			{
+				(isMintPage) ?
+					<Mint /> 
+				: 
+					<Homepage />
+			}
+		</>
+	)
+		{/* <Switch>
 			<Route path="/" element={<Homepage />} />
 			<Route path="/mint" element={<Mint />} />
-		</Routes>
-	)
+		</Switch> */}
 }
 
 export default App;

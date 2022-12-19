@@ -1,48 +1,33 @@
-import { useState, useEffect, Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { useEffect } from 'react';
 import { 
 	Flex,
-	Button,
 	Image,
 	Text,
 	ChakraProvider,
-	Spinner,
 	Accordion,
 	AccordionItem,
 	AccordionButton,
 	AccordionPanel,
 	AccordionIcon,
 } from "@chakra-ui/react";
-import "./App.scss";
-import "./mdi/css/materialdesignicons.css";
+import Navbar from './Navbar';
 import Aos from "aos";
 import "aos/dist/aos.css";
-import img1 from "./img1.png";
-import img2 from "./img2.png";
-import founder1 from "./brent_moonbird.jpg" //"./unfunk.webp";
-import founder2 from "./horst.webp";
-import founder3 from "./luna.webp";
-import founder4 from "./uv.webp";
-import founder5 from "./fede.webp";
-import founder3small from "./founder3small.png";
-// import Banner from "./header.jpeg";
-import Banner from "./Banner.jpg";
-import Ticket from "./ticket.png";
-import Graphic from "./horst_graphics.jpg";
-import { Carousel } from "react-responsive-carousel";
+import "./styles/App.scss";
+import "./mdi/css/materialdesignicons.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import icon from "./icon_pitch.png";
-import pitch_icon from "./pitch_soccer_logo.png"
-import discord_icon from "./discord_button.png"
-import twitter_icon from "./twitter_button.png"
-import pitch_soccer from "./pitch_soccer.png"
-import roadmap_tile from "./roadmap_tile.jpeg"
-const TWITTER_LINK = "https://twitter.com/pitchweb3";
-const INSTAGRAM_LINK = "https://www.instagram.com/pitch.nft/";
+import founder1 from "./images/brent_moonbird.jpg" //"./unfunk.webp";
+import founder2 from "./images/horst.webp";
+import founder3 from "./images/luna.webp";
+import founder4 from "./images/uv.webp";
+import founder5 from "./images/fede.webp";
+import pitch_icon from "./images/pitch_soccer_logo.png"
+import discord_icon from "./images/discord_button.png"
+import twitter_icon from "./images/twitter_button.png"
+import roadmap_tile from "./images/roadmap_tile.jpeg"
+// import Mint from './Mint'
+// const TWITTER_LINK = "https://twitter.com/pitchweb3";
+// const INSTAGRAM_LINK = "https://www.instagram.com/pitch.nft/";
 const DISCORD_LINK = "https://discord.gg/EVfKShm6"
 const offBlack = "#251811"
 const offBlue = "rgb(95, 159, 255)"
@@ -57,93 +42,7 @@ const teamImageHeight = teamImageWidth;
 const teamTitlesFS = ["16px", "30px"]
 const roadmapCardWidth = ["90%", "40%"]
 
-const visionHeader = [{
-	fontFamily: "PoppinsExtraBold",
-	lineHeight: "100%",
-	fontSize: "24px",
-	marginTop: "3%",
-	marginBottom: "3%"
-  },
-  {
-  fontFamily: "PoppinsExtraBold",
-	lineHeight: "100%",
-	fontSize: "36px",
-	marginTop: "3%",
-	marginBottom: "3%"
-  }
-]
-const visionText = {
-	fontFamily: "PoppinsMedium",
-	lineHeight: "110%",
-	fontSize: "2.2vh",
-	marginBottom: "10%"
-  }  
-
-
-// IMAGE ASSETS
-// img1.png, img2.png are the guys that show up during the initial animation / bounce up and down
-// icon.png is in the upper left part of the screen
-
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
-
-function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowDimensions;
-}
-
-
 const Homepage = () => {
-	const [isConnected, setIsConnected] = useState(false)
-	const [correctNetwork, setCorrectNetwork] = useState(false)
-	const [isMintActive, setIsMintActive] = useState(0)
-	const [isPublicMintActive, setIsPublicMintActive] = useState(false)
-	const [isPreMintActive, setIsPreMintActive] = useState(false)
-	const [userAddress, setUserAddress] = useState("")
-	const [loading, setLoading] = useState(false)
-	const [funcRes, setFuncRes] = useState("")
-	const [funcRes2, setFuncRes2] = useState("")
-	const [funcTrue, setFuncTrue] = useState(false)
-	const [mintAmount, setMintAmount] = useState(1)
-	const [maxMintAmount, setMaxMintAmount] = useState(0)
-	const [isCheckingMintState, setIsCheckingMintState] = useState(false)
-	const [timesCheckedMintState, setTimesCheckedMintState] = useState(0)
-	const [appShow, setAppShow] = useState(true)
-	const [appShowImg, setAppShowImg] = useState(false)
-	const { height, width } = useWindowDimensions();
-
-	let joinDiscordWidth="1%"
-
-	useEffect(() => {
-		Aos.init({ duration: 1500 });
-		setTimeout(function() {
-			setAppShowImg(true)
-		}, 500)
-		setTimeout(function() {
-			setAppShow(true)
-		}, 2000)
-	}, []);
-
-	// const pitchMaps = [ "World Cup excitement! Discord action centered around the tournament.", 
-	// 				"Banter, memes and frequent contests with amazing prizes.", 
-	// 				"Pitch will cover the tab of your group's watch party (2 each week)", 
-	// 				"Preview of artwork for 1st NFT collection; utility and mint details released." 
-	// 				]
 	const pitchMaps = [
 		"World Cup excitement, banter and community events with frequent prizes given!",
 		"Football trivia and game prediction leaderboard",
@@ -155,22 +54,12 @@ const Homepage = () => {
 		"Pitch will organize and cover the tab of your group’s watch party (2 each week)"
 	]
 
-// 	const pitchMaps2 = [ "1st mini NFT collection launched Dec 15. Basic benefits include access to grand prizes for WC final; airdrops and access to project collaborations; allow-list spot for Pitch's main PFP collection launch in mid-January.", 
-// 	"Organized and sponsored watch parties for later rounds of World Cup.", 
-// 	"Creation of and initial setup of Pitch DAO.", 
-// ]
 	const pitchMaps2 = [
 		"Ethereum Mainnet ERC-1155 tokens",
 		"Supply of 640 tokens",
-		"Mint price of 0.02 ETH WL, 0.03 ETH Public"
+		"Mint price of 0.02 ETH"
 	]
 
-// 	const pitchMaps3 = [ "January: main launch of main PFP generative NFT collection.", 
-// 	"Exclusive IRL community events and meetups, focused on EPL and Champions League.",
-// 	"Finalize DAO governance and funding strategy.",
-// 	"Announce partnerships with football teams, players and local community organizations.",
-// 	"Define scope of digital platform for members and start building prototype app."
-//  ]
 	const pitchMaps3 = [
 		"Entry to WC final giveaway on Dec 18th with top-tier grand prizes",
 		"Access to exclusive Pitch-sponsored events",
@@ -188,13 +77,6 @@ const Homepage = () => {
 		"Define scope of digital platform for members and start building prototype apps"
 	]
 
-	const pitchDrive = [ 
-		"We are a new startup with a mission to create a community devoted to the future of the beautiful game in web3.",
-		"Pitch is a community to have a kickass time and meet fellow fans.",
-		"We'll reward members with killer prizes and digitial collectibles.",
-		"Ultimately, our vision of Pitch is a platform which spans our digital and physical worlds, including mobile-first applications at the center of the Football Web3 space."
-]
-
 	const pitchQs = [
 		"1. What is Pitch? ANSWER Pitch is a new web3 startup devoted to the global football community.  We are a place to have a kickass time and meet fellow fans.  We’ll reward members with killer prizes and digital collectibles.  Ultimately, Pitch will be a platform which spans our digital and physical worlds, including mobile-first applications at the center of the Football Web3 space.",
 		"2. Who is Pitch? ANSWER See Team section on our website here.",
@@ -203,25 +85,19 @@ const Homepage = () => {
 		"5. What will the first Pitch NFT collection include? ANSWER Our first NFT collection will be a limited edition for our OG members which will include special perks, exclusive giveaways and priority in subsequent collection mint.",
 		"6. When is the mint? ANSWER December 19th",
 		"7. What’s the supply? ANSWER 640 tokens",
-		"8. How much is mint? ANSWER 0.02 eth WL, 0.03 eth Public",
+		"8. How much is mint? ANSWER 0.02 eth",
 		"9. Which blockchain will the NFT mint be on? ANSWER All tokens will mint on Ethereum network.",
 		"10. Will there be allow lists? ANSWER Yes! Stay tuned for more updates; get an advantage by staying active, helping your fellow members and growing our community. The team is watching and will certainly award any enthusiastic members."
 	]
 
+	useEffect(() => {
+		Aos.init({ duration: 1500 });
+	}, []);
+
 	return (
 		<ChakraProvider>
 			<Flex direction="column" w="100vw" height="60vh" className='greenPitchBkg'>
-				<Flex className='pitchNavbar' justify="space-between">
-					<Image src={pitch_icon} className="pitchNavbarLogo" h="80%"/>
-					<Flex>
-						<a>
-							<Image src={discord_icon} className="pitchDiscordIcon" onClick={() => window.open("https://discord.gg/EVfKShm6", "_BLANK")} />
-						</a>
-						<a style={{margin:0, padding:0, cursor:"pointer"}}>
-							<Image src={twitter_icon} className="pitchTwitterIcon" onClick={() => window.open("https://twitter.com/pitchweb3", "_BLANK")} />
-						</a>
-					</Flex>
-				</Flex>
+				<Navbar />
 				<Flex direction={"column"} marginLeft={["10%", "25%"]} marginTop={["10%", "5vh"]}>
 					<Text marginTop fontSize={headerBigFS} className="headerText headerBig">Football</Text>
 					<Text fontSize={headerBigFS} className="headerText headerBig">Community</Text>
@@ -288,15 +164,14 @@ const Homepage = () => {
 				</Flex>
 			</Flex>
 
-			<Flex minHeight="100vh" w="100%" direction="column" backgroundImage={roadmap_tile} color="#fff" fontFamily="chalk" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
+			<Flex minHeight="100vh" w={["100%"]} direction="column" backgroundImage={roadmap_tile} color="#fff" fontFamily="chalk" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
 				
 				<Text className="RoadMapHeaderText" fontSize={sectionHeaderFontSize}>Roadmap</Text>
-				<Text id="rdMap" visibility="hidden"></Text>
 				<Flex w="100%" overflow="hidden" mt={["4", "0"]}>
 					<Flex w={roadmapCardWidth} direction="column" data-aos="fade-right" bg="white" borderRadius="8px" borderColor="black" borderWidth="3px" boxShadow="8px 8px 0px black" mb="8px">
 						<Text fontSize={["15px", "17px"]} color={offBlack}>
 							<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Now</Text>
-							<Flex direction="column" ml={["6", "12"]} w="100%" data-aos="fade-up">
+							<Flex direction="column" ml={["6", "12"]} data-aos="fade-up">
 							<ul>
 								{
 									pitchMaps.map((item, index) => (
@@ -322,7 +197,7 @@ const Homepage = () => {
 
 						<Text fontWeight="bold" ml={["6", "12"]} fontSize={["20px", "30px" ]} color={offBlue} fontFamily="PoppinsExtraBold">Soon</Text>
 							<Flex direction="column"ml={["6", "12"]} w="100%" data-aos="fade-up">
-								<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">1st preliminary NFT collection launched Monday Dec 19th 2022:</Text>
+								<Text fontWeight="bold" fontSize={["18px", "22px" ]} mb="2" mr="20" color={offBlack} fontFamily="PoppinsMedium">1st preliminary NFT collection launched Friday Dec 16th 2022:</Text>
 								
 								<ul>
 								{
@@ -515,7 +390,7 @@ const Homepage = () => {
 			</Flex>
 
 			<Flex minHeight="100vh" w="100%" direction="column" bg="#1D8E65" color="white" fontFamily="PoppinsMedium" px={["4%", "6%"]} pt={["4%", "2.8%"]} pb={["8%", "2.8%"]}>
-				<Flex w="100%" mt={["6", "12"]} data-aos="fade-up" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" direction="column" align="center">
+				<Flex w="85%" mt={["6", "12"]} data-aos="fade-up" bg="rgba(255,255,255,0.05)" borderRadius="8px" px={["6", "8"]} py="6" direction="column" align="center">
 					<Flex align="flex-start" direction={["column", "row"]}>
 						<Text>
 							<Text fontWeight="bold" fontSize={sectionHeaderFontSize} fontFamily="PoppinsExtraBold">

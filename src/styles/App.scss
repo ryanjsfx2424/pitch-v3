@@ -1,0 +1,342 @@
+@font-face {
+  font-family: chalk;
+  src: url('../fonts/chalkboard.ttf');
+}
+@font-face {
+  font-family: PoppinsExtraBold;
+  src: url('../fonts/Poppins-ExtraBold.ttf');
+}
+@font-face {
+  font-family: PoppinsMedium;
+  src: url('../fonts/Poppins-Medium.ttf');
+}
+
+.poppins-extra-bold {
+  font-family: PoppinsExtraBold;
+}
+
+.poppins-extra-bold {
+  font-family: PoppinsMedium;
+}
+
+body {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-font-smoothing: antialiased;
+  font-family: chalk;
+}
+.scPage::-webkit-scrollbar {
+  width: 0!important;
+}
+input, textarea, select, button, Input, Button, Select {
+	outline: none!important;
+  resize: none!important;
+}
+input, textarea {
+  border: none;
+  outline: none;
+}
+@keyframes bounce {
+  0% { background: rgba(255,255,255,0.1);}
+  100% { background: rgba(255,255,255,0.4);}
+}
+.bounce {
+  animation: bounce 5s infinite;
+  transition: 5s ease-in-out;
+}
+
+.greenPitchBkg {
+  background: url('../images/Pitch_Website_HeaderBGGreen.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+.pitchNavbar {
+  background-color: #7DE279;
+  color: #251811;
+  margin: 0 auto;
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 6px 8px;
+}
+
+.pitchNavbarLogo {
+  margin-left: 10px;
+  margin-top: 2px;
+}
+.pitchDiscordIcon {
+  margin-right: 5px;
+  height: 90%;
+  margin-top: 5%;
+
+}
+.pitchTwitterIcon {
+  height: 90%;
+  margin-top: 5%;
+}
+
+.headerText {
+  margin-left: 0;
+}
+
+.headerDiscordButton {
+  background-color: #E3FD00;
+  font-family: PoppinsExtraBold;
+  color: #251811;
+  padding: 0 3%;
+  border-radius: 12px;
+  border: 2px solid black;
+  box-shadow: 4px 4px;
+
+}
+
+.headerBig {
+  font-family: PoppinsExtraBold;
+  line-height: 100%;
+}
+.headerSml {
+  font-family: PoppinsMedium;
+  line-height: 100%;
+  font-size: 3vh;
+}
+
+.whiteSquareBkg {
+  background: url('../images/Pitch_Website_HeaderBGSquares.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.qCard {
+  background-color: white;
+  color: #251811;
+  font-family: PoppinsMedium;
+  box-shadow: 5px 5px;
+  border-radius: 25px;
+  border: 2px solid;
+}
+
+.qCardTop {
+  margin-top: 10px;
+}
+
+.qCardXFlex {
+  border-radius: 100%;
+  margin-left: 8px;
+  border: 2px solid;
+  box-shadow: 4px 1px;
+}
+
+.qCardX {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.qCardYellow {
+  background-color: rgb(253, 253, 0);
+}
+
+.qCardOrange {
+  background-color: rgb(255, 107, 107);
+}
+
+.qCardAqua {
+  background-color: rgb(0, 234, 255);
+}
+
+.qCardBlue {
+  background-color: rgb(90, 90, 251);
+}
+
+
+.qCardButton {
+  border-radius: 10px;
+  font-size: 2vh;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 8%;
+  border: 2px solid;
+  box-shadow: 3px 1px;
+  margin-right: 4%;
+}
+
+.qCardTextTop {
+  margin-top: 15px;
+}
+
+.qCardText {
+  margin-left: 20px;
+  margin-right: 0;
+  line-height: 100%;
+}
+
+.qCardBottom {
+  margin-bottom: 20px;
+}
+
+.qCardTopLeft {
+  margin-right: 3%;
+}
+
+.qCardTopRight {
+  margin-left: 3%;
+}
+
+.qCardBottomLeft {
+  margin-right: 3%;
+  margin-top: 3%;
+}
+
+.qCardBottomRight {
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+.visionBkg {  
+  background-color: #5B71FF;
+}
+
+.visionImage {
+  background: url('../images/VisionImage.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pitchSoccerVisonImage {
+  background: url('../images/pitch_soccer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.visionHeader {
+  font-family: PoppinsExtraBold;
+  line-height: 100%;
+  font-size: 5vh;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.visionText {
+  font-family: PoppinsMedium;
+  line-height: 110%;
+  font-size: 2.2vh;
+  margin-bottom: 10%;
+}
+
+.roadmapBkg {
+  background: url('../images/roadmap_tile.jpeg');
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.RoadMapHeaderText {
+  font-size: 3vh;
+  font-family: PoppinsExtraBold;
+  color: #251811;
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.roadmapBox {
+  box-shadow: 6px 6px;;
+}
+
+@keyframes bounce2 {
+  0% { background: rgba(255,255,255,0.4);}
+  100% { background: rgba(255,255,255,0.1);}
+}
+.bounce2 {
+  animation: bounce 5s infinite;
+  transition: 5s ease-in-out;
+}
+
+@keyframes shakes {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(80px);}
+  100% {transform: translateY(0);}
+}
+.shake {
+  animation: shakes 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@keyframes shakes2 {
+  0% { transform: translateY(70px);}
+  50% { transform: translateY(0px);}
+  100% {transform: translateY(70px);}
+}
+.shake2 {
+  animation: shakes2 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@keyframes mshakes {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(25px);}
+  100% {transform: translateY(0);}
+}
+.mshake {
+  animation: mshakes 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@keyframes mshakes2 {
+  0% { transform: translateY(35px);}
+  50% { transform: translateY(0px);}
+  100% {transform: translateY(35px);}
+}
+.mshake2 {
+  animation: mshakes2 3s infinite;
+  transition: 3s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+  .absW {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  @keyframes shakes {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(40px);}
+    100% {transform: translateY(0);}
+  }
+}
+.carImg {
+  width: 100%!important;
+}
+
+.mintHeader {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.ConnectMintButton {
+  border-radius: 12px;
+  border: 2px solid white;
+  box-shadow: 4px 4px black;
+  padding: 2px 0px;
+  width: 144px;
+}
+
+.pmButton {
+  width:  32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 4px 4px black;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.tokenIdPM {
+  font-size: 36px;
+  margin-right: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+}
