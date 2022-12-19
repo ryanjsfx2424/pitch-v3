@@ -21,17 +21,18 @@ import nft4 from "./images/OGPass_1.mp4"
 import bkg1 from "./images/PITCH_OGPASS_Streetpitch.jpg"
 import bkg2 from "./images/PITCH_OGPASS_Matchday.jpg"
 import bkg3 from "./images/PITCH_OGPASS_Brrrr.jpg"
-import contractABI from "./json/contract_abi_v3.json";
+import contractABI from "./json/contract_abi_v3_eth.json";
 const NUM_TOKENS = 3
 const tokenIds = [11,22,33]; //[69,420,333]
 const maxSupply = 640;
-const OS_LINK = "https://testnets.opensea.io/collection/pitch-og-pass-goerli"
+const OS_LINK = "https://opensea.io/collection/pitch-og-pass"
 
-const CHAIN_ID = 5
-const CHAIN_NAME = "GOERLI"
-const CONTRACT_ADDRESS = "0x0e5d6e724C17dD6299D143B26C921F4BD48Cb86c"
-//const CHAIN_ID = 1
-//const CHAIN_NAME = "ETH"
+// const CHAIN_ID = 5
+// const CHAIN_NAME = "GOERLI"
+// const CONTRACT_ADDRESS = "0x0e5d6e724C17dD6299D143B26C921F4BD48Cb86c"
+const CHAIN_ID = 1
+const CHAIN_NAME = "ETH"
+const CONTRACT_ADDRESS = "0x2a81E1Cf399f3E15716c6A07755FC94cC5AB06d6"
 
 const bkgSrcs = [bkg1, bkg2, bkg3]
 const vidSrcs = [nft1, nft2, nft3]
