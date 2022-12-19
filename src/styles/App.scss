@@ -65,7 +65,6 @@ input, textarea {
   margin-top: 2px;
 }
 .pitchDiscordIcon {
-  margin-right: 5px;
   height: 90%;
   margin-top: 5%;
 
@@ -74,6 +73,11 @@ input, textarea {
   height: 90%;
   margin-top: 5%;
 }
+.pitchOpenseaIcon {
+  height: 90%;
+  margin-top: 5%;
+}
+
 
 .headerText {
   margin-left: 0;
@@ -313,7 +317,9 @@ input, textarea {
 
 .mintHeader {
   font-size: 48px;
-  margin-bottom: 24px;
+  line-height: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .ConnectMintButton {
@@ -339,4 +345,8 @@ input, textarea {
   margin-right: 8px;
   margin-left: 8px;
   cursor: pointer;
+}
+
+.NavbarLinksButton {
+  background-color: transparent !important;
 }

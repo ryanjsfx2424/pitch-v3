@@ -18,15 +18,22 @@ import nft3 from "./images/PITCH_OGPASS_Brrrr_02_1.mp4"
 import nft2 from "./images/PITCH_OGPASS_MatchDay_03_1.mp4"
 import nft1 from "./images/PITCH_OGPASS_StreetPitch_03_1.mp4"
 import nft4 from "./images/OGPass_1.mp4"
+import bkg1 from "./images/PITCH_OGPASS_Streetpitch.jpg"
+import bkg2 from "./images/PITCH_OGPASS_Matchday.jpg"
+import bkg3 from "./images/PITCH_OGPASS_Brrrr.jpg"
 import contractABI from "./json/contract_abi_v2h.json";
 const NUM_TOKENS = 3
 const tokenIds = [69,420,333]
+const OS_LINK = "https://testnets.opensea.io/collection/pitch-xcsifzwtje"
 
 const CHAIN_ID = 5
 const CHAIN_NAME = "GOERLI"
 const CONTRACT_ADDRESS = "0x03dc224c1501CD2A48Ac6795B1340000964691Db"
 //const CHAIN_ID = 1
 //const CHAIN_NAME = "ETH"
+
+const bkgSrcs = [bkg1, bkg2, bkg3]
+const vidSrcs = [nft1, nft2, nft3]
 
 const Mint = () => {
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -35,6 +42,11 @@ const Mint = () => {
     const [mintAmount,       setMintAmount]         = useState(1)
     const [supplyMinted,     setSupplyMinted]       = useState("?/8888")
     const [tokenIndex, setTokenIndex] = useState(0);
+    const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+
+    const onLoadedData = () => {
+        setIsVideoLoaded(true)
+    }
 
     const handleConnectWallet = async() => {
         setIsButtonDisabled(true)
@@ -122,6 +134,23 @@ const Mint = () => {
     }
 
     const mint = async() => {
+        setIsButtonDisabled(true);
+
+        console.log("127");
+        const newDiv = document.createElement("div");
+        newDiv.style.setProperty("background-color", "white");
+        newDiv.style.setProperty("opacity", "25%");
+        newDiv.style.setProperty("width", "100vw");
+        newDiv.style.setProperty("height", "100vh");
+        newDiv.style.setProperty("position", "absolute");
+        newDiv.style.setProperty("z-index", "100");
+
+        const currentDiv = document.getElementById("MintTopFlex");
+        console.log("currentDiv: ", currentDiv);
+        // document.body.insertBefore(newDiv, currentDiv);
+        currentDiv.parentNode.insertBefore(newDiv, currentDiv);
+        console.log("129");
+
         Web3EthContract.setProvider(window.ethereum);
         const web3 = new Web3(window.ethereum);
 
@@ -148,6 +177,7 @@ const Mint = () => {
             } catch (err) {
                 console.log("116 team mint err: ", err);
                 alert("Team Mint: error estimating gas");
+                newDiv.remove();
                 setIsButtonDisabled(false);
                 return;
             }
@@ -163,14 +193,16 @@ const Mint = () => {
 					to: CONTRACT_ADDRESS,
 					from: window.ethereum.selectedAddress});
 				console.log("132 WL mint receipt: ", receipt);
-                alert("Team Mint: Successfully minted your Pitch NFTs!");
+                alert("Team Mint: Successfully minted your Pitch NFTs! View them at " + OS_LINK);
                 setIsButtonDisabled(false);
+                newDiv.remove();
                 return;
 			}
 			catch (err) {
 				console.log("135 WL mint err", err);
 				alert("Team Mint: error minting your NFT(s).");
                 setIsButtonDisabled(false);
+                newDiv.remove();
                 return;
             }
         } else {
@@ -179,6 +211,7 @@ const Mint = () => {
             if (localSaleState === 0) {
                 alert("Error: sale is not active (WL).");
                 setIsButtonDisabled(false);
+                newDiv.remove();
                 return;
             } else if (localSaleState === 2) { // public
                 let totalCostWei = await SmartContractObj.methods.tokenCostPublic(tokenId).call();
@@ -193,6 +226,7 @@ const Mint = () => {
                     console.log("151 mint err: ", err);
                     alert("Mint: error estimating gas");
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
     
@@ -209,20 +243,23 @@ const Mint = () => {
                         value: totalCostWei
                     });
                     console.log("165 mint receipt: ", receipt);
-                    alert("Successfully minted your Pitch NFTs!")
+                    alert("Successfully minted your Pitch NFTs! View them at " + OS_LINK)
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
                 catch (err) {
                     console.log("135 WL mint err", err);
                     alert("Team Mint: error minting your NFT(s).");
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
             } else {
                 if (mintType !== "wl") {
                     alert("Error: public sale is not yet active and this wallet is not WL'd.");
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
                 let totalCostWei = await SmartContractObj.methods.tokenCostWl(tokenId).call();
@@ -238,6 +275,7 @@ const Mint = () => {
                     console.log("182 WL mint err: ", err);
                     alert("WL Mint: error estimating gas");
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
     
@@ -254,14 +292,16 @@ const Mint = () => {
                         value: totalCostWei
                     });
                     console.log("196 WL mint receipt: ", receipt);
-                    alert("WL Mint: Successfully minted your Pitch NFTs!")
+                    alert("WL Mint: Successfully minted your Pitch NFTs! View them at " + OS_LINK)
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
                 catch (err) {
                     console.log("200 WL mint err", err);
                     alert("WL Mint: error minting your NFT(s).");
                     setIsButtonDisabled(false);
+                    newDiv.remove();
                     return;
                 }
             }
@@ -354,16 +394,21 @@ const Mint = () => {
 
     return (
         <ChakraProvider>
-        	<Flex direction="column" w="100vw" height="100vh" className='greenPitchBkg' fontFamily="PoppinsMedium" color="white">
+        	<Flex id="MintTopFlex" direction="column" w="100vw" height="100vh" className='greenPitchBkg' fontFamily="PoppinsMedium" color="white">
             {/* <Flex minHeight="60vh" w="100%" direction="column" bg="#1D8E65" color="white" fontFamily="PoppinsMedium"> */}
                 <Navbar />
-                <Flex w={["100%", "70%"]} height={["70%"]} mt={["0", "12"]} bg="rgba(255,255,255,0.05)" borderRadius="8px" ml={[0, "15%"]} py="6" direction="column" align="center"
-                    style={{marginBottom: "200px"}}>
+                <Flex w={["100%", "70%"]} height={["70%"]} mt={["0", "12"]} bg="rgba(255,255,255,0.05)" borderRadius="8px" ml={[0, "15%"]} padding={["4%","1%"]} direction="column" align="center">
                     <h1 className="mintHeader" fontFamily="PoppinsExtraBold" fontSize="24px">Pitch Mint</h1>
-                    {!isWalletConnected ?
+
+                    <Text marginBottom="12px">Wallet Address: 0x...{window.ethereum.selectedAddress ? String(window.ethereum.selectedAddress).substring(String(window.ethereum.selectedAddress.length - 4)) : "???"}</Text>
+                    {!isWalletConnected &&
                         <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleConnectWallet}>Connect Wallet</button>
-                    :
+                    }
+                    {isWalletConnected && !isButtonDisabled &&
                         <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleMint}>Mint</button>
+                    }
+                    {isWalletConnected && isButtonDisabled &&
+                        <button className="ConnectMintButton" disabled={isButtonDisabled} onClick={handleMint}>Busy</button>
                     }
                     <Flex marginTop="24px" marginBottom="12px" direction="row">
                         <button className="pmButton" disabled={isButtonDisabled} onClick={handleMinusButton}>-</button>
@@ -373,13 +418,17 @@ const Mint = () => {
                     <Text fontSize="24px" marginBottom="12px">Token Id: {tokenIds[tokenIndex]}</Text>
                     <Flex direction="row">
                         <button className="tokenIdPM" disabled={isButtonDisabled} onClick={decrementTokenIndex} fontSize="96px">&lt;</button>
-                        
-                        {tokenIndex === 0 &&
-                            <video controls width="250">
-                                <source src={nft1} type="video/mp4"></source>
+
+                        {!isVideoLoaded ?
+                            <Image width="250px" src={bkgSrcs[tokenIndex]}></Image>
+                        :
+                            <video controls src={vidSrcs[tokenIndex]} width="250" onLoadedData={onLoadedData}>
                             </video>
                         }
-                        {tokenIndex === 1 &&
+                        <video controls src={vidSrcs[tokenIndex]} width="0" onLoadedData={onLoadedData} style={{opacity: 0}}>
+                        </video>
+
+                        {/* {tokenIndex === 1 &&
                             <video controls width="250">
                                 <source src={nft2} type="video/mp4"></source>
                             </video>
@@ -393,7 +442,7 @@ const Mint = () => {
                             <video controls width="250">
                                 <source src={nft4} type="video/mp4"></source>
                             </video>
-                        }
+                        } */}
                         
                         <button className="tokenIdPM" disabled={isButtonDisabled} onClick={incrementTokenIndex}>&gt;</button>
                     </Flex>
