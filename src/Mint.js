@@ -40,9 +40,13 @@ const Mint = () => {
     const [isWalletConnected, setIsWalletConnected] = useState(false);
     const [isCorrectChain, setIsCorrectChain] = useState(false);
     const [mintAmount,       setMintAmount]         = useState(1)
-    const [supplyMinted,     setSupplyMinted]       = useState("?/8888")
+    const [tokenSupply,     setTokenSupply]       = useState("???/213")
     const [tokenIndex, setTokenIndex] = useState(0);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+
+    function mod(n, m) {
+        return ((n % m) + m) % m;
+      }
 
     const onLoadedData = () => {
         setIsVideoLoaded(true)
@@ -56,13 +60,62 @@ const Mint = () => {
 
     const handleMint = async() => {
         setIsButtonDisabled(true)
-        await mint()
+
+        const newDiv = document.createElement("div");
+        newDiv.style.setProperty("background-color", "white");
+        newDiv.style.setProperty("opacity", "25%");
+        newDiv.style.setProperty("width", "100vw");
+        newDiv.style.setProperty("height", "100vh");
+        newDiv.style.setProperty("position", "absolute");
+        newDiv.style.setProperty("z-index", "100");
+
+        const currentDiv = document.getElementById("MintTopFlex");
+        console.log("currentDiv: ", currentDiv);
+        // document.body.insertBefore(newDiv, currentDiv);
+        currentDiv.parentNode.insertBefore(newDiv, currentDiv);
+        console.log("129");
+
+        const SmartContractObj = await mint();
+
+        let tokenId = tokenIds[tokenIndex]
+        let tokenMaxSupply = await SmartContractObj.methods.tokenSupply(tokenId).call()
+        let tokenCurSupply = await SmartContractObj.methods.totalSupply(tokenId).call()
+
+        let val;
+        if (String(tokenCurSupply).length === 1) {
+            val = " " + " " + String(tokenCurSupply)
+        } else if (String(tokenCurSupply).length === 2) {
+            val = " " + String(tokenCurSupply)
+        } else {
+            val = String(tokenCurSupply)
+        }
+        setTokenSupply(val + "/" + String(tokenMaxSupply));
+
+        newDiv.remove();
         setIsButtonDisabled(false)
     }
 
     const connectWallet = async () => {
         if (window.ethereum) {
             console.log("has window ethereum");
+
+            Web3EthContract.setProvider(window.ethereum);
+            const web3 = new Web3(window.ethereum);
+            const SmartContractObj = new Web3EthContract(contractABI, CONTRACT_ADDRESS);
+
+            let tokenId = tokenIds[tokenIndex]
+            let tokenMaxSupply = await SmartContractObj.methods.tokenSupply(tokenId).call()
+            let tokenCurSupply = await SmartContractObj.methods.totalSupply(tokenId).call()
+
+            let val;
+            if (String(tokenCurSupply).length === 1) {
+                val = " " + " " + String(tokenCurSupply)
+            } else if (String(tokenCurSupply).length === 2) {
+                val = " " + String(tokenCurSupply)
+            } else {
+                val = String(tokenCurSupply)
+            }
+            setTokenSupply(val + "/" + String(tokenMaxSupply));
 
             var account;
             try {
@@ -134,23 +187,6 @@ const Mint = () => {
     }
 
     const mint = async() => {
-        setIsButtonDisabled(true);
-
-        console.log("127");
-        const newDiv = document.createElement("div");
-        newDiv.style.setProperty("background-color", "white");
-        newDiv.style.setProperty("opacity", "25%");
-        newDiv.style.setProperty("width", "100vw");
-        newDiv.style.setProperty("height", "100vh");
-        newDiv.style.setProperty("position", "absolute");
-        newDiv.style.setProperty("z-index", "100");
-
-        const currentDiv = document.getElementById("MintTopFlex");
-        console.log("currentDiv: ", currentDiv);
-        // document.body.insertBefore(newDiv, currentDiv);
-        currentDiv.parentNode.insertBefore(newDiv, currentDiv);
-        console.log("129");
-
         Web3EthContract.setProvider(window.ethereum);
         const web3 = new Web3(window.ethereum);
 
@@ -177,9 +213,7 @@ const Mint = () => {
             } catch (err) {
                 console.log("116 team mint err: ", err);
                 alert("Team Mint: error estimating gas");
-                newDiv.remove();
-                setIsButtonDisabled(false);
-                return;
+                return SmartContractObj;
             }
 
 			gasPriceEstimate = await web3.eth.getGasPrice();
@@ -194,25 +228,19 @@ const Mint = () => {
 					from: window.ethereum.selectedAddress});
 				console.log("132 WL mint receipt: ", receipt);
                 alert("Team Mint: Successfully minted your Pitch NFTs! View them at " + OS_LINK);
-                setIsButtonDisabled(false);
-                newDiv.remove();
-                return;
+                return SmartContractObj;
 			}
 			catch (err) {
 				console.log("135 WL mint err", err);
 				alert("Team Mint: error minting your NFT(s).");
-                setIsButtonDisabled(false);
-                newDiv.remove();
-                return;
+                return SmartContractObj;
             }
         } else {
             let localSaleState = await SmartContractObj.methods.saleState().call();
             localSaleState = Number(localSaleState)
             if (localSaleState === 0) {
                 alert("Error: sale is not active (WL).");
-                setIsButtonDisabled(false);
-                newDiv.remove();
-                return;
+                return SmartContractObj;
             } else if (localSaleState === 2) { // public
                 let totalCostWei = await SmartContractObj.methods.tokenCostPublic(tokenId).call();
                 totalCostWei = String(totalCostWei*mintAmount)
@@ -225,9 +253,7 @@ const Mint = () => {
                 } catch (err) {
                     console.log("151 mint err: ", err);
                     alert("Mint: error estimating gas");
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
     
                 gasPriceEstimate = await web3.eth.getGasPrice();
@@ -244,23 +270,17 @@ const Mint = () => {
                     });
                     console.log("165 mint receipt: ", receipt);
                     alert("Successfully minted your Pitch NFTs! View them at " + OS_LINK)
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
                 catch (err) {
                     console.log("135 WL mint err", err);
                     alert("Team Mint: error minting your NFT(s).");
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
             } else {
                 if (mintType !== "wl") {
                     alert("Error: public sale is not yet active and this wallet is not WL'd.");
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
                 let totalCostWei = await SmartContractObj.methods.tokenCostWl(tokenId).call();
                 totalCostWei = String(totalCostWei*mintAmount)
@@ -274,9 +294,7 @@ const Mint = () => {
                 } catch (err) {
                     console.log("182 WL mint err: ", err);
                     alert("WL Mint: error estimating gas");
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
     
                 gasPriceEstimate = await web3.eth.getGasPrice();
@@ -293,16 +311,12 @@ const Mint = () => {
                     });
                     console.log("196 WL mint receipt: ", receipt);
                     alert("WL Mint: Successfully minted your Pitch NFTs! View them at " + OS_LINK)
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
                 catch (err) {
                     console.log("200 WL mint err", err);
                     alert("WL Mint: error minting your NFT(s).");
-                    setIsButtonDisabled(false);
-                    newDiv.remove();
-                    return;
+                    return SmartContractObj;
                 }
             }
         }
@@ -318,6 +332,19 @@ const Mint = () => {
             Web3EthContract.setProvider(window.ethereum);
             const web3 = new Web3(window.ethereum);
             const SmartContractObj = new Web3EthContract(contractABI, CONTRACT_ADDRESS);
+
+            let tokenMaxSupply = await SmartContractObj.methods.tokenSupply(tokenId).call()
+            let tokenCurSupply = await SmartContractObj.methods.totalSupply(tokenId).call()
+
+            let val;
+            if (String(tokenCurSupply).length === 1) {
+                val = " " + " " + String(tokenCurSupply)
+            } else if (String(tokenCurSupply).length === 2) {
+                val = " " + String(tokenCurSupply)
+            } else {
+                val = String(tokenCurSupply)
+            }
+            setTokenSupply(val + "/" + String(tokenMaxSupply));
             let localSaleState = await SmartContractObj.methods.saleState().call();
             localSaleState = Number(localSaleState)
             console.log("localSaleState: ", localSaleState);
@@ -378,16 +405,56 @@ const Mint = () => {
         setIsButtonDisabled(false);
     }
 
-    const decrementTokenIndex = () => {
+    const decrementTokenIndex = async() => {
         setIsButtonDisabled(true);
-        let localTokenIndex = (tokenIndex - 1) % NUM_TOKENS;
+        let localTokenIndex = mod((tokenIndex - 1), NUM_TOKENS);
+
+        console.log("localTokenIndex: ", localTokenIndex);
+
+        Web3EthContract.setProvider(window.ethereum);
+        const web3 = new Web3(window.ethereum);
+        const SmartContractObj = new Web3EthContract(contractABI, CONTRACT_ADDRESS);
+
+        let tokenId = tokenIds[tokenIndex]
+        let tokenMaxSupply = await SmartContractObj.methods.tokenSupply(tokenIds[localTokenIndex]).call()
+        let tokenCurSupply = await SmartContractObj.methods.totalSupply(tokenIds[localTokenIndex]).call()
+
+        let val;
+        if (String(tokenCurSupply).length === 1) {
+            val = " " + " " + String(tokenCurSupply)
+        } else if (String(tokenCurSupply).length === 2) {
+            val = " " + String(tokenCurSupply)
+        } else {
+            val = String(tokenCurSupply)
+        }
+        setTokenSupply(val + "/" + String(tokenMaxSupply));
+
         setTokenIndex(localTokenIndex)
         setIsButtonDisabled(false);
     }
 
-    const incrementTokenIndex = () => {
+    const incrementTokenIndex = async() => {
         setIsButtonDisabled(true);
         let localTokenIndex = (tokenIndex + 1) % NUM_TOKENS;
+
+        Web3EthContract.setProvider(window.ethereum);
+        const web3 = new Web3(window.ethereum);
+        const SmartContractObj = new Web3EthContract(contractABI, CONTRACT_ADDRESS);
+
+        let tokenId = tokenIds[tokenIndex]
+        let tokenMaxSupply = await SmartContractObj.methods.tokenSupply(tokenIds[localTokenIndex]).call()
+        let tokenCurSupply = await SmartContractObj.methods.totalSupply(tokenIds[localTokenIndex]).call()
+
+        let val;
+        if (String(tokenCurSupply).length === 1) {
+            val = " " + " " + String(tokenCurSupply)
+        } else if (String(tokenCurSupply).length === 2) {
+            val = " " + String(tokenCurSupply)
+        } else {
+            val = String(tokenCurSupply)
+        }
+        setTokenSupply(val + "/" + String(tokenMaxSupply));
+
         setTokenIndex(localTokenIndex)
         setIsButtonDisabled(false);
     }
@@ -415,7 +482,8 @@ const Mint = () => {
                         <Text w="12px" fontSize="24px">{mintAmount}</Text>
                         <button className="pmButton" disabled={isButtonDisabled} onClick={handlePlusButton}>+</button>
                     </Flex>
-                    <Text fontSize="24px" marginBottom="12px">Token Id: {tokenIds[tokenIndex]}</Text>
+                    <Text fontSize="24px" marginBottom="0px">Token Id: {tokenIds[tokenIndex]}</Text>
+                    <Text fontSize="18px" marginBottom="12px">Supply: {tokenSupply}</Text>
                     <Flex direction="row">
                         <button className="tokenIdPM" disabled={isButtonDisabled} onClick={decrementTokenIndex} fontSize="96px">&lt;</button>
 
@@ -427,22 +495,6 @@ const Mint = () => {
                         }
                         <video controls src={vidSrcs[tokenIndex]} width="0" onLoadedData={onLoadedData} style={{opacity: 0}}>
                         </video>
-
-                        {/* {tokenIndex === 1 &&
-                            <video controls width="250">
-                                <source src={nft2} type="video/mp4"></source>
-                            </video>
-                        }
-                        {tokenIndex === 2 &&
-                            <video controls width="250">
-                                <source src={nft3} type="video/mp4"></source>
-                            </video>
-                        }
-                        {tokenIndex === 4 &&
-                            <video controls width="250">
-                                <source src={nft4} type="video/mp4"></source>
-                            </video>
-                        } */}
                         
                         <button className="tokenIdPM" disabled={isButtonDisabled} onClick={incrementTokenIndex}>&gt;</button>
                     </Flex>
