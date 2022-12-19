@@ -28,7 +28,7 @@ import roadmap_tile from "./images/roadmap_tile.jpeg"
 // import Mint from './Mint'
 // const TWITTER_LINK = "https://twitter.com/pitchweb3";
 // const INSTAGRAM_LINK = "https://www.instagram.com/pitch.nft/";
-const DISCORD_LINK = "https://discord.gg/EVfKShm6"
+const DISCORD_LINK = "https://discord.gg/HhJNjZjupz"
 const offBlack = "#251811"
 const offBlue = "rgb(95, 159, 255)"
 const sectionHeaderFontSize = ["24px", "36px"]
@@ -431,7 +431,7 @@ const Homepage = () => {
 					</Text>
 					<Flex flex="1" align="center" justify="center" mt="8"  data-aos="fade-up">
 						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]} align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} cursor="pointer" className="bounce" mr={["3", "5" ]} onClick={() => window.open("https://twitter.com/pitchweb3", "_BLANK")}><i className="mdi mdi-twitter"></i></Flex>
-						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open("https://discord.gg/EVfKShm6", "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
+						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce" mr={["3", "5" ]} cursor="pointer" onClick={() => window.open("https://discord.gg/HhJNjZjupz", "_BLANK")}><i className="mdi mdi-discord"></i></Flex>
 						<Flex fontSize={["18px", "20px"]} h={["40px", "45px"]} w={["40px", "45px"]}  align="center" justify="center" borderRadius="100%" bg="rgba(255,255,255,0.1)" transition="300ms ease-in-out" _hover={{ bg: "rgba(255,255,255,0.3)"}} className="bounce2" onClick={() => window.open("https://www.instagram.com/pitch.nft/", "_BLANK")} cursor="pointer"><i className="mdi mdi-instagram"></i></Flex>
 					</Flex>
 				</Flex>
