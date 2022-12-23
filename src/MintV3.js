@@ -26,6 +26,7 @@ const NUM_TOKENS = 3
 const tokenIds = [11,22,33]; //[69,420,333]
 const maxSupply = 640;
 const OS_LINK = "https://opensea.io/collection/pitch-og-pass"
+const WL_WALLET = "0x470de8e36eeffc9601d09044a4b6fdd81d900ccf"//"0xADda176020629A666Ed5012266a7F9D04096D40b"
 
 // const CHAIN_ID = 5
 // const CHAIN_NAME = "GOERLI"
@@ -249,7 +250,11 @@ const Mint = () => {
             if (localSaleState === 0) {
                 alert("Error: sale is not active (WL).");
                 return SmartContractObj;
-            } else if (localSaleState === 2) { // public
+//            } else if (localSaleState === 2 && mintType !== "wl") { // public
+            } else if (localSaleState === 2 && window.ethereum.selectedAddress !== WL_WALLET.toLowerCase()) { // public
+                console.log("253")
+                console.log("window.ethereum.selectedAddress: ", window.ethereum.selectedAddress)
+                console.log("window.ethereum.selectedAddress !== 0xAD: ", window.ethereum.selectedAddress !== "0xADda176020629A666Ed5012266a7F9D04096D40b")
                 let totalCostWei = await SmartContractObj.methods.tokenCostPublic().call();
                 totalCostWei = String(totalCostWei*mintAmount)
                 console.log("totalCostWei public: ", totalCostWei);
@@ -286,6 +291,7 @@ const Mint = () => {
                     return SmartContractObj;
                 }
             } else {
+                console.log("290")
                 if (mintType !== "wl") {
                     alert("Error: public sale is not yet active and this wallet is not WL'd.");
                     return SmartContractObj;
@@ -348,7 +354,8 @@ const Mint = () => {
             let maxPerWalletTotal;
             let totalMinted;
             if (localSaleState === 0) {
-                const values = await postRequestMerkle(window.ethereum.selectedAddress);
+                //const values = await postRequestMerkle(window.ethereum.selectedAddress);
+                const values = await postRequestMerkle("0x470de8e36eeffc9601d09044a4b6fdd81d900ccf");
                 const mintType = values[1];
                 console.log("values: ", values)
                 console.log("mintType: ", mintType)
@@ -373,6 +380,8 @@ const Mint = () => {
                     totalMinted       = await SmartContractObj.methods.walletTotalMintedPublic(window.ethereum.selectedAddress).call();
                 }
             }
+            const values = await postRequestMerkle("0x470de8e36eeffc9601d09044a4b6fdd81d900ccf");
+            console.log("values: ", values);
             maxPerWalletTotal = Number(maxPerWalletTotal)
             totalMinted = Number(totalMinted)
             
