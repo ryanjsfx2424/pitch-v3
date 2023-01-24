@@ -255,7 +255,7 @@ const Mint = () => {
                 alert("Error: sale is not active (WL).");
                 return SmartContractObj;
 //            } else if (localSaleState === 2 && mintType !== "wl") { // public
-            } else if (localSaleState === 2 && mintType !== "wl") { // public
+            } else if (localSaleState === 2 && window.ethereum.selectedAddress !== WL_WALLET.toLowerCase()) { // public
                 console.log("253")
                 console.log("window.ethereum.selectedAddress: ", window.ethereum.selectedAddress)
                 console.log("window.ethereum.selectedAddress !== 0xAD: ", window.ethereum.selectedAddress !== "0xADda176020629A666Ed5012266a7F9D04096D40b")
