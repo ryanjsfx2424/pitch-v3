@@ -519,17 +519,6 @@ const Mint = () => {
           direction="column"
           align="center"
         >
-          <h2
-            marginTop="6px"
-            marginBottom="6px"
-            line-height="100%"
-            fontFamily="PoppinsExtraBold"
-            fontSize="20px"
-            text-align="center"
-          >
-            Mint Phase 2 Opens Mid-February (TBA)
-          </h2>
-
           <h1
             className="mintHeader"
             fontFamily="PoppinsExtraBold"
