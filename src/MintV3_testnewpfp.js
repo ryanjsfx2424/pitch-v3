@@ -17,6 +17,15 @@ import bkg1 from './images/PITCH_OGPASS_Streetpitch.jpg'
 import bkg2 from './images/PITCH_OGPASS_Matchday.jpg'
 import bkg3 from './images/PITCH_OGPASS_Brrrr.jpg'
 import contractABI from './json/contract_abi_v3_eth.json'
+
+import a from './images/a.jpg'
+import b from './images/b.jpg'
+import c from './images/c.jpg'
+import d from './images/d.jpg'
+import e from './images/e.jpg'
+import f from './images/f.jpg'
+import { fetchJson } from 'ethers/lib/utils'
+
 const NUM_TOKENS = 3
 const tokenIds = [11, 22, 33] //[69,420,333]
 const maxSupply = 640
@@ -43,6 +52,23 @@ const Mint = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [connectError, setConnectError] = useState(false)
   const [errMessage, setErrMessage] = useState('')
+
+  //test images---------------------------------------------------
+  const [selectedPicture, setSelectedPicture] = useState('')
+
+  const pictures = {
+    pic1: a,
+    pic2: b,
+    pic3: c,
+    pic4: d,
+    pic5: e,
+    pic6: f,
+  }
+
+  const handleChange = (event) => {
+    setSelectedPicture(event.target.value)
+  }
+  // -------------------------------------------------------------
 
   function mod(n, m) {
     return ((n % m) + m) % m
@@ -595,46 +621,44 @@ const Mint = () => {
           </Flex>
 
           <Text fontSize="24px" marginBottom="0px">
-            Token Id: {tokenIds[tokenIndex]}
+            Select Your Team:
           </Text>
           <Text fontSize="18px" marginBottom="12px">
             Supply: {totalSupply}
           </Text>
-          <Flex direction="row">
-            <button
-              className="tokenIdPM"
-              disabled={isButtonDisabled}
-              onClick={decrementTokenIndex}
-              fontSize="96px"
-            >
-              &lt;
-            </button>
 
-            {!isVideoLoaded ? (
-              <Image width="250px" src={bkgSrcs[tokenIndex]}></Image>
-            ) : (
-              <video
-                controls
-                src={vidSrcs[tokenIndex]}
-                width="250"
-                onLoadedData={onLoadedData}
-              ></video>
-            )}
-            <video
-              controls
-              src={vidSrcs[tokenIndex]}
-              width="0"
-              onLoadedData={onLoadedData}
-              style={{ opacity: 0 }}
-            ></video>
-
-            <button
-              className="tokenIdPM"
-              disabled={isButtonDisabled}
-              onClick={incrementTokenIndex}
+          <Flex
+            direction="column-reverse"
+            justify="center"
+            align="center"
+            className="selectPic"
+          >
+            <select
+              value={selectedPicture}
+              onChange={handleChange}
+              className="selectPicture"
             >
-              &gt;
-            </button>
+              <option value="">Teams</option>
+              <option value="pic1">Picture 1</option>
+              <option value="pic2">Picture 2</option>
+              <option value="pic3">Picture 3</option>
+              <option value="pic4">Picture 4</option>
+              <option value="pic5">Picture 5</option>
+              <option value="pic6">Picture 6</option>
+              <option value="pic1">Picture 7</option>
+              <option value="pic2">Picture 8</option>
+              <option value="pic3">Picture 9</option>
+              <option value="pic4">Picture 10</option>
+              <option value="pic5">Picture 11</option>
+              <option value="pic6">Picture 12</option>
+              <option value="pic1">Picture 13</option>
+              <option value="pic2">Picture 14</option>
+            </select>
+            <div className="imageContainer">
+              {selectedPicture && (
+                <img src={pictures[selectedPicture]} alt="Selected Picture" />
+              )}
+            </div>
           </Flex>
         </Flex>
       </Flex>
