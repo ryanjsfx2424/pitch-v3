@@ -45,18 +45,19 @@ input, textarea {
 }
 
 .greenPitchBkg {
-  background: url('../images/Pitch_Website_HeaderBGGreen.jpg');
+  // background: url('../images/Pitch_Website_HeaderBGGreen.jpg');
+  background-color: #A9A39C;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  // background-color: transparent;
 }
 .pitchNavbar {
-  background-color: #7DE279;
+  background-color: #6FDEAF;
   color: #251811;
   margin: 0 auto;
   width: 90%;
   height: 50px;
-  border-radius: 10px;
+
   box-shadow: 6px 8px;
 }
 
@@ -334,7 +335,7 @@ input, textarea {
 }
 
 .ConnectMintButton {
-  border-radius: 12px;
+  // border-radius: 12px;
   border: 2px solid white;
   box-shadow: 4px 4px black;
   padding: 2px 0px;
@@ -370,13 +371,14 @@ input, textarea {
 }
 
 .selectPicture{
-  border-radius: 12px;
+  // border-radius: 12px;
   border: 2px solid white;
   box-shadow: 4px 4px black;
   padding: 2px 0px;
   width: 144px;
-  
   color: black;
+  margin-bottom: 5px;
+  cursor: pointer;
   
 }
 
@@ -384,7 +386,6 @@ input, textarea {
   border-radius: 12px;
   border: 2px solid white;
   box-shadow: 4px 4px black;
-
   width: 144px;
 }
 
@@ -392,3 +393,20 @@ input, textarea {
   border-radius: 12px;
 }
 
+@media screen and (min-width:700px){
+  .image-grid{
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: minmax(100px,auto);
+  margin:0 auto;
+  gap:10px;
+  grid-template-areas:
+  "header header header"
+  "nav nav  ."
+  "aside section section"
+  "aside main main"
+  "footer footer footer"
+  ;
+  }
+  }

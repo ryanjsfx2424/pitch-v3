@@ -5,7 +5,14 @@ import Web3EthContract from 'web3-eth-contract'
 import { ethers } from 'ethers'
 import keccak256 from 'keccak256'
 import MerkleTree from 'merkletreejs'
-import { Flex, Image, Text, ChakraProvider } from '@chakra-ui/react'
+import {
+  Flex,
+  Image,
+  Text,
+  ChakraProvider,
+  Grid,
+  GridItem,
+} from '@chakra-ui/react'
 import Navbar from './Navbar'
 import wlt from './json/TEAM.json'
 import wlw from './json/WL.json'
@@ -16,14 +23,38 @@ import nft4 from './images/OGPass_1.mp4'
 import bkg1 from './images/PITCH_OGPASS_Streetpitch.jpg'
 import bkg2 from './images/PITCH_OGPASS_Matchday.jpg'
 import bkg3 from './images/PITCH_OGPASS_Brrrr.jpg'
-import contractABI from './json/contract_abi_v3_eth.json'
 
-import a from './images/a.jpg'
-import b from './images/b.jpg'
-import c from './images/c.jpg'
-import d from './images/d.jpg'
-import e from './images/e.jpg'
-import f from './images/f.jpg'
+//////////////////My test Trait
+import contractABI from './json/TraitBasedNFT.json'
+
+import Rockets from './images/Shirt_Thumbs/01_RocketsRedWhite.png'
+import Black from './images/Shirt_Thumbs/02_BlackWhiteDynamite.png'
+import Blue from './images/Shirt_Thumbs/03_BlueThunder.png'
+import Victoria from './images/Shirt_Thumbs/04_VictoriaBlaugrana.png'
+import Cielo from './images/Shirt_Thumbs/05_CieloAzzurro.png'
+import Diamon from './images/Shirt_Thumbs/06_DiamondWhites.png'
+import Dynamiet from './images/Shirt_Thumbs/07_DynamietRoodWit.png'
+import Estrellas from './images/Shirt_Thumbs/08_EstrellasBrancoVerde.png'
+import Fortuna from './images/Shirt_Thumbs/09_FortunaKoenigsrot.png'
+import Groen from './images/Shirt_Thumbs/10_FCGroenWit.png'
+import Unione from './images/Shirt_Thumbs/11_FCUnione.png'
+import Force from './images/Shirt_Thumbs/12_ForceBleue.png'
+import Grey from './images/Shirt_Thumbs/13_GreyShirt.png'
+import Tank from './images/Shirt_Thumbs/14_GreyTankTop.png'
+import Zip from './images/Shirt_Thumbs/15_GreyZipShirt.png'
+import Luke from './images/Shirt_Thumbs/16_LukesLegendary.png'
+import Pale from './images/Shirt_Thumbs/17_PaleGreyShirt.png'
+import Rayos from './images/Shirt_Thumbs/18_RayosBlancos.png'
+import Dragons from './images/Shirt_Thumbs/19_RedDragons.png'
+import Fury from './images/Shirt_Thumbs/20_RedFury.png'
+import Royals from './images/Shirt_Thumbs/21_RedRoyals.png'
+import RedTank from './images/Shirt_Thumbs/22_RedTankTop.png'
+import Fulmine from './images/Shirt_Thumbs/23_SCFulmine.png'
+import Skyblue from './images/Shirt_Thumbs/24_SkyblueCity.png'
+import SV from './images/Shirt_Thumbs/25_SVGelbSchwarz.png'
+import Yellow from './images/Shirt_Thumbs/26_YellowZipShirt.png'
+import Blank from './images/Shirt_Thumbs/27_NoShirt.png'
+
 import { fetchJson } from 'ethers/lib/utils'
 
 const NUM_TOKENS = 3
@@ -35,9 +66,15 @@ const WL_WALLET = '0x470de8e36eeffc9601d09044a4b6fdd81d900ccf' //"0xADda17602062
 // const CHAIN_ID = 5
 // const CHAIN_NAME = "GOERLI"
 // const CONTRACT_ADDRESS = "0x0e5d6e724C17dD6299D143B26C921F4BD48Cb86c"
-const CHAIN_ID = 1
-const CHAIN_NAME = 'ETH'
-const CONTRACT_ADDRESS = '0x2a81E1Cf399f3E15716c6A07755FC94cC5AB06d6'
+// const CHAIN_ID = 1
+// const CHAIN_NAME = 'ETH'
+// const CONTRACT_ADDRESS = '0x2a81E1Cf399f3E15716c6A07755FC94cC5AB06d6'
+
+////////////// My test contract
+const CHAIN_ID = 5
+const CHAIN_NAME = 'GOERLI'
+const CONTRACT_ADDRESS = '0x4E17d4fb585C13AdfbdFD60fCb583cc511DfbB5a'
+///////////////
 
 const bkgSrcs = [bkg1, bkg2, bkg3]
 const vidSrcs = [nft1, nft2, nft3]
@@ -52,23 +89,6 @@ const Mint = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
   const [connectError, setConnectError] = useState(false)
   const [errMessage, setErrMessage] = useState('')
-
-  //test images---------------------------------------------------
-  const [selectedPicture, setSelectedPicture] = useState('')
-
-  const pictures = {
-    pic1: a,
-    pic2: b,
-    pic3: c,
-    pic4: d,
-    pic5: e,
-    pic6: f,
-  }
-
-  const handleChange = (event) => {
-    setSelectedPicture(event.target.value)
-  }
-  // -------------------------------------------------------------
 
   function mod(n, m) {
     return ((n % m) + m) % m
@@ -527,7 +547,7 @@ const Mint = () => {
         id="MintTopFlex"
         direction="column"
         w="100vw"
-        height="100vh"
+        height="125vh"
         className="greenPitchBkg"
         fontFamily="PoppinsMedium"
         color="white"
@@ -620,46 +640,152 @@ const Mint = () => {
             </button>
           </Flex>
 
-          <Text fontSize="24px" marginBottom="0px">
+          <Text fontSize="24px" marginBottom="12px">
             Select Your Team:
           </Text>
-          <Text fontSize="18px" marginBottom="12px">
-            Supply: {totalSupply}
-          </Text>
 
-          <Flex
-            direction="column-reverse"
-            justify="center"
-            align="center"
-            className="selectPic"
+          <Grid
+            templateColumns="repeat(7, 1fr)"
+            gap={6}
+            fontSize="10px"
+            className="image-grid"
           >
-            <select
-              value={selectedPicture}
-              onChange={handleChange}
-              className="selectPicture"
-            >
-              <option value="">Teams</option>
-              <option value="pic1">Picture 1</option>
-              <option value="pic2">Picture 2</option>
-              <option value="pic3">Picture 3</option>
-              <option value="pic4">Picture 4</option>
-              <option value="pic5">Picture 5</option>
-              <option value="pic6">Picture 6</option>
-              <option value="pic1">Picture 7</option>
-              <option value="pic2">Picture 8</option>
-              <option value="pic3">Picture 9</option>
-              <option value="pic4">Picture 10</option>
-              <option value="pic5">Picture 11</option>
-              <option value="pic6">Picture 12</option>
-              <option value="pic1">Picture 13</option>
-              <option value="pic2">Picture 14</option>
-            </select>
-            <div className="imageContainer">
-              {selectedPicture && (
-                <img src={pictures[selectedPicture]} alt="Selected Picture" />
-              )}
-            </div>
-          </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Rockets} className="selectPicture" />
+              <Text>A.F.C. Rockets</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Black} className="selectPicture" />
+              <Text>Black and White Dynamite</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Blue} className="selectPicture" />
+              <Text>Blue Thunder FC</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Victoria} className="selectPicture" />
+              <Text>CF Victoria Blau-Grana</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Cielo} className="selectPicture" />
+              <Text>Cielo Azzurro F.C.</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Diamon} className="selectPicture" />
+              <Text>Diamond Whites</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Dynamiet} className="selectPicture" />
+              <Text>Dynamiet Rood-Wit</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Estrellas} className="selectPicture" />
+              <Text>Estrelas Branco-Verde S.C.</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Fortuna} className="selectPicture" />
+              <Text>FC Fortuna Koenigsrot</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Groen} className="selectPicture" />
+              <Text>FC Groen-Wit Kracht</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Unione} className="selectPicture" />
+              <Text>FC Unione Blu e Nera</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Force} className="selectPicture" />
+              <Text>Force Bleue FC</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            {/* <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Grey} className="selectPicture" />
+              <Text>Grey Shirt</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Tank} className="selectPicture" />
+              <Text>Grey Tank Top</Text>
+              <Text>{totalSupply}</Text>
+            </Flex> */}
+            {/* <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Zip} className="selectPicture" />
+              <Text>Grey Zip Shirt</Text>
+              <Text>{totalSupply}</Text>
+            </Flex> */}
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Luke} className="selectPicture" />
+              <Text>Luke's Legendary</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            {/* <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Pale} className="selectPicture" />
+              <Text>Pale Grey Shirt</Text>
+              <Text>{totalSupply}</Text>
+            </Flex> */}
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Rayos} className="selectPicture" />
+              <Text>Rayos Blancos CF</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Dragons} className="selectPicture" />
+              <Text>Red Dragons FC</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Fury} className="selectPicture" />
+              <Text>Red Fury FC</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Royals} className="selectPicture" />
+              <Text>Red Royals United</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            {/* <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={RedTank} className="selectPicture" />
+              <Text>Red Tank Top</Text>
+              <Text>{totalSupply}</Text>
+            </Flex> */}
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Fulmine} className="selectPicture" />
+              <Text>S.C. Fulmine Nero-Bianco</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Skyblue} className="selectPicture" />
+              <Text>Skyblue City Stars</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={SV} className="selectPicture" />
+              <Text>SV Gelb-Schwarz</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+            {/* <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Yellow} className="selectPicture" />
+              <Text>Yellow Zip Shirt</Text>
+              <Text>{totalSupply}</Text>
+            </Flex> */}
+            <Flex direction="column" align="centre" textAlign="center" gap={1}>
+              <Image src={Blank} className="selectPicture" />
+              <Text>Non-Team</Text>
+              <Text>{totalSupply}</Text>
+            </Flex>
+          </Grid>
         </Flex>
       </Flex>
     </ChakraProvider>
