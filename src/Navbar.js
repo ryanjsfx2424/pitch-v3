@@ -1,14 +1,11 @@
 import React from 'react'
 import { Flex, Image } from '@chakra-ui/react'
-import './styles/App.scss'
 import pitch_icon from './images/new_pitch_logo.png'
 import discord_icon from './images/discord_button.png'
 import twitter_icon from './images/twitter_button.png'
 import opensea_icon from './images/opensea_button.png'
 
 function Navbar() {
-  const url = window.location.href
-  const isMintPage = url.includes('mint')
   return (
     <Flex
       className="pitchNavbar"
@@ -24,7 +21,7 @@ function Navbar() {
             className="pitchOpenseaIcon"
             onClick={() =>
               window.open(
-                'https://opensea.io/collection/pitch-og-pass',
+                'https://opensea.io/collection/pitch-hero',
                 '_BLANK',
               )
             }

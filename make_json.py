@@ -1,4 +1,4 @@
-with open("discord.txt", "r") as fid:
+with open("WL2.txt", "r") as fid:
   line = fid.readlines()
 
 line = line[0].replace("'","").replace(" ","").replace("\n","").split(",")
